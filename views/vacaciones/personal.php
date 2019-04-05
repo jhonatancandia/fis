@@ -37,7 +37,7 @@
                     <a class="nav-link" href="situacion">SITUACION</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">BENEFICIO</a>
+                    <a class="nav-link" href="beneficio">BENEFICIO</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">REPORTES</a>
@@ -127,7 +127,7 @@
                         <input type="text" class="form-control" placeholder="Apellido(s)" required>
                     </div>
                     <div class="form-group">
-                        <input class="form-control datepicker" placeholder="Fecha de nacimiento"/>
+                        <input class="form-control" id="datepicker0" placeholder="Fecha de nacimiento"/>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Dirección" required>
@@ -139,7 +139,7 @@
                         <input type="email" class="form-control" placeholder="Correo electronico" required>
                     </div>
                     <div class="form-group">
-                        <input class="form-control datepicker" placeholder="Fecha de ingreso"/>
+                        <input class="form-control" id="datepicker1" placeholder="Fecha de ingreso"/>
                     </div>
                     <div class="form-group">
                         <select class="form-control" id="exampleFormControlSelect1" required>
@@ -189,7 +189,7 @@
                         <input type="text" class="form-control" placeholder="Apellido(s)" required>
                     </div>
                     <div class="form-group">
-                        <input class="form-control datepicker" placeholder="Fecha de nacimiento"/>
+                        <input class="form-control" id="datepicker2" placeholder="Fecha de nacimiento"/>
                     </div>
                             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Dirección" required>
@@ -201,7 +201,7 @@
                         <input type="email" class="form-control" placeholder="Correo electronico" required>
                     </div>
                     <div class="form-group">
-                        <input class="form-control datepicker" placeholder="Fecha de ingreso"/>
+                        <input class="form-control" id="datepicker3" placeholder="Fecha de ingreso"/>
                     </div>
                     <div class="form-group">
                         <select class="form-control" id="exampleFormControlSelect1" required>
@@ -245,10 +245,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input class="form-control datepicker" placeholder="Fecha de inicio"/>
+                        <input class="form-control" id="datepicker4" placeholder="Fecha de inicio"/>
                     </div>
                     <div class="form-group">
-                        <input class="form-control datepicker" placeholder="Fecha fin"/>
+                        <input class="form-control" id="datepicker5" placeholder="Fecha fin"/>
                     </div>
                     <div class="form-group">
                         <textarea class="form-control" rows="5" id="comment" placeholder="Observación"></textarea>
@@ -280,10 +280,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input class="form-control datepicker" placeholder="Fecha de inicio"/>
+                        <input class="form-control" id="datepicker6" placeholder="Fecha de inicio"/>
                     </div>
                     <div class="form-group">
-                        <input class="form-control datepicker" placeholder="Fecha fin"/>
+                        <input class="form-control" id="datepicker7" placeholder="Fecha fin"/>
                     </div>
                     <div class="form-group">
                         <textarea class="form-control" rows="5" id="comment" placeholder="Observación"></textarea>

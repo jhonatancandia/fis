@@ -25,7 +25,7 @@
                     <a class="nav-link" href="personal">PERSONAL</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">CARGOS</a>
+                    <a class="nav-link" href="cargos">CARGOS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">RUTA</a>
@@ -53,7 +53,7 @@
     <div class="container mt-5">
         <div class="d-flex justify-content-center">
             <div class="col-10" style="padding : 0;">
-                <h5 class="text-center">CARGOS</h5>
+                <h5 class="text-center">BENEFICIOS</h5>
                 <div class="row mt-5">
                     <div class="col">
                         <div class="form-group">
@@ -64,7 +64,7 @@
                         <div class="form-group text-right">
                             <button type="button" class="btn btn-primary" data-toggle="modal"
                                 data-target="#modalNuevoCargo">
-                                NUEVO CARGO
+                                NUEVO BENEFICIO
                             </button>
                         </div>
                     </div>
@@ -72,34 +72,33 @@
                 <table class="table table-hover mt-2">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-center">ITEM</th>
-                            <th scope="col" class="text-center">NOMBRE DE CARGO</th>
+                            <th scope="col" class="text-center">BENEFICIO</th>
+                            <th scope="col" class="text-center">DESCRIPCION</th>
                             <th scope="col" class="text-center">ACCIONES</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="text-center">12342</td>
-                            <td class="text-center">Fiscal de materia lll</td>
+                    <tr>
+                            <td class="text-center">Lactancia</td>
+                            <td class="text-center">Es el tiempo que empieza desde el nacimiento del bebe</td>
                             <td class="text-center">
-                                <a href="" title="Editar" data-toggle="modal" data-target="#modalEditar"><i class="far fa-edit"></i></a>
+                            <a href="" title="Editar" data-toggle="modal" data-target="#modalEditar"><i class="far fa-edit"></i></a>
                                 <a href="" title="Eliminar" data-toggle="tooltip" data-placement="top"><i class="far fa-trash-alt"></i></a>
                             </td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    <!-- Fin Tabla de cargo -->
-    <!-- Modal registrar cargo -->
+    <!-- Fin Tabla de beneficio -->
+    <!-- Modal registrar beneficio -->
     <div class="modal fade" id="modalNuevoCargo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">NUEVO CARGO</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">NUEVO BENEFICIO</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -107,12 +106,10 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="NUMERO DE ITEM" required>
+                            <input type="text" class="form-control" placeholder="Beneficio" required>
                         </div>
                         <div class="form-group">
-                            <select class="form-control" id="exampleFormControlSelect1">
-                            <option>Elegir un cargo</option>
-                            </select>
+                            <textarea class="form-control" rows="5" id="comment" placeholder="Descripción"></textarea>
                         </div>
                     </div>
                 <div class="modal-footer">
@@ -131,14 +128,14 @@
                 });
             });
     </script>
-    <!-- Final Modal registrar cargo -->
-    <!-- Modal editar cargo -->
+    <!-- Final Modal registrar beneficio -->
+    <!-- Modal editar beneficio -->
     <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">EDITAR CARGO</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">EDITAR BENEFICIO</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -146,12 +143,10 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="NUMERO DE ITEM" required>
+                            <input type="text" class="form-control" placeholder="Beneficio" required>
                         </div>
                         <div class="form-group">
-                            <select class="form-control" id="exampleFormControlSelect1">
-                            <option>Elegir un cargo</option>
-                            </select>
+                            <textarea class="form-control" rows="5" id="comment" placeholder="Descripción"></textarea>
                         </div>
                     </div>
                 <div class="modal-footer">
@@ -170,7 +165,8 @@
                 });
             });
     </script>
-    <!-- Final Modal editar cargo -->
+        
+    <!-- Final Modal editar beneficio -->
     <?php 
         include '../layout/script.php';    
     ?>
