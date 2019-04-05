@@ -1,0 +1,17 @@
+.navbar {
+    border-bottom: 2px solid #eee;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.new-config{
+    display: block;
+    margin: 10px;
+    width: 80px;
+}
+
+body{
+    font-size: 15px;
+}
