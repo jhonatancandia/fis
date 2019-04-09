@@ -72,7 +72,7 @@
                 <table class="table table-hover mt-2">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-center">NOMBRE</th>
+                            <th scope="col" class="text-center">UNIDAD</th>
                             <th scope="col" class="text-center">DIRECCION</th>
                             <th scope="col" class="text-center">TELEFONO</th>
                             <th scope="col" class="text-center">ACCIONES</th>

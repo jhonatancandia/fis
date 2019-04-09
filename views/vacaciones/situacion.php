@@ -72,7 +72,7 @@
                 <table class="table table-hover mt-2">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-center">NOMBRE DE SITUACION</th>
+                            <th scope="col" class="text-center">SITUACION</th>
                             <th scope="col" class="text-center">DESCRIPCION</th>
                             <th scope="col" class="text-center">ACCIONES</th>
                         </tr>
