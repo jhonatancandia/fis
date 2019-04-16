@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-04-2019 a las 21:33:04
+-- Tiempo de generación: 16-04-2019 a las 21:24:01
 -- Versión del servidor: 10.1.28-MariaDB
 -- Versión de PHP: 7.1.11
 
@@ -30,8 +30,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `beneficio` (
   `cod_beneficio` int(11) NOT NULL,
-  `tipo_beneficio` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
+  `tipo_beneficio` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `descripcion` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `beneficio`
+--
+
+
 
 -- --------------------------------------------------------
 
@@ -41,7 +49,8 @@ CREATE TABLE `beneficio` (
 
 CREATE TABLE `cargo` (
   `nro_item` int(11) NOT NULL,
-  `tipo_cargo` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
+  `tipo_cargo` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
@@ -51,10 +60,12 @@ CREATE TABLE `cargo` (
 --
 
 CREATE TABLE `cas` (
+  `cod_cas` int(11) NOT NULL,
   `cas` int(11) NOT NULL,
   `inicio` int(11) NOT NULL,
   `fin` int(11) NOT NULL,
-  `dias` int(11) NOT NULL
+  `dias` int(11) NOT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
@@ -107,7 +118,7 @@ CREATE TABLE `empleado_cargo` (
 --
 
 CREATE TABLE `empleado_cas` (
-  `cas` int(11) NOT NULL,
+  `cod_cas` int(11) NOT NULL,
   `ci` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `fecha_inicio` date NOT NULL,
   `fecha_fin` date NOT NULL
@@ -202,7 +213,8 @@ CREATE TABLE `permiso` (
   `cod_permiso` int(11) NOT NULL,
   `cant_dias` int(11) NOT NULL,
   `descripcion` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
-  `gestion` int(11) NOT NULL
+  `gestion` int(11) NOT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
@@ -225,8 +237,14 @@ CREATE TABLE `rol` (
 CREATE TABLE `situacion` (
   `cod_situacion` int(11) NOT NULL,
   `tipo_situacion` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `descripcion` int(255) NOT NULL
+  `descripcion` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `situacion`
+--
+
 
 -- --------------------------------------------------------
 
@@ -238,7 +256,8 @@ CREATE TABLE `unidad` (
   `cod_unidad` int(11) NOT NULL,
   `nombre_unidad` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
   `direccion` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `telefono` varchar(15) COLLATE utf8_spanish2_ci NOT NULL
+  `telefono` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
@@ -264,7 +283,8 @@ CREATE TABLE `vacacion` (
   `cod_vacacion` int(11) NOT NULL,
   `cant_dias` int(11) NOT NULL,
   `descripcion` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
-  `gestion` int(11) NOT NULL
+  `gestion` int(11) NOT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
@@ -287,7 +307,7 @@ ALTER TABLE `cargo`
 -- Indices de la tabla `cas`
 --
 ALTER TABLE `cas`
-  ADD PRIMARY KEY (`cas`);
+  ADD PRIMARY KEY (`cod_cas`);
 
 --
 -- Indices de la tabla `empleado`
@@ -314,7 +334,7 @@ ALTER TABLE `empleado_cargo`
 -- Indices de la tabla `empleado_cas`
 --
 ALTER TABLE `empleado_cas`
-  ADD KEY `cas` (`cas`),
+  ADD KEY `cas` (`cod_cas`),
   ADD KEY `ci` (`ci`);
 
 --
@@ -403,7 +423,13 @@ ALTER TABLE `vacacion`
 -- AUTO_INCREMENT de la tabla `beneficio`
 --
 ALTER TABLE `beneficio`
-  MODIFY `cod_beneficio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_beneficio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `cas`
+--
+ALTER TABLE `cas`
+  MODIFY `cod_cas` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `hoja_ruta`
@@ -427,7 +453,7 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `situacion`
 --
 ALTER TABLE `situacion`
-  MODIFY `cod_situacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_situacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `unidad`
@@ -476,7 +502,7 @@ ALTER TABLE `empleado_cargo`
 --
 ALTER TABLE `empleado_cas`
   ADD CONSTRAINT `empleado_cas_ibfk_1` FOREIGN KEY (`ci`) REFERENCES `empleado` (`ci`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `empleado_cas_ibfk_2` FOREIGN KEY (`cas`) REFERENCES `cas` (`cas`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `empleado_cas_ibfk_2` FOREIGN KEY (`cod_cas`) REFERENCES `cas` (`cod_cas`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `empleado_hoja_ruta`

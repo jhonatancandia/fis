@@ -95,10 +95,14 @@
                                 <td class="text-center">Quillacollo</td>
                                 <td class="text-center">2019-03-14</td>
                                 <td class="text-center" width="300">
-                                    <a href="" title="Editar" data-toggle="modal" data-target="#modalEditarEmpleado"><i class="far fa-edit"></i></a>
-                                    <a href="" title="Eliminar" data-toggle="tooltip" data-placement="top"><i class="far fa-trash-alt"></i></a>
-                                    <a href="" title="Vacaciones" data-toggle="modal" data-target="#modalVacaciones"><i class="fas fa-plane"></i></a>
-                                    <a href="" title="Permiso" data-toggle="modal" data-target="#modalPermiso"><i class="fas fa-procedures"></i></a>
+                                    <a href="" title="Editar" data-toggle="modal" data-target="#modalEditarEmpleado"><i
+                                            class="far fa-edit"></i></a>
+                                    <a href="" title="Eliminar" data-toggle="tooltip" data-placement="top"><i
+                                            class="far fa-trash-alt"></i></a>
+                                    <a href="" title="Vacaciones" data-toggle="modal" data-target="#modalVacaciones"><i
+                                            class="fas fa-plane"></i></a>
+                                    <a href="" title="Permiso" data-toggle="modal" data-target="#modalPermiso"><i
+                                            class="fas fa-procedures"></i></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -127,7 +131,7 @@
                         <input type="text" class="form-control" placeholder="Apellido(s)" required>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" id="datepicker0" placeholder="Fecha de nacimiento"/>
+                        <input class="form-control" id="datepicker0" placeholder="Fecha de nacimiento" />
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Dirección" required>
@@ -139,26 +143,26 @@
                         <input type="email" class="form-control" placeholder="Correo electronico" required>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" id="datepicker1" placeholder="Fecha de ingreso"/>
+                        <input class="form-control" id="datepicker1" placeholder="Fecha de ingreso" />
                     </div>
                     <div class="form-group">
                         <select class="form-control" id="exampleFormControlSelect1" required>
-                        <option>Elegir un cargo</option>
+                            <option>Elegir un cargo</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <select class="form-control" id="exampleFormControlSelect1" required>
-                        <option>Elegir situacion</option>
+                            <option>Elegir situacion</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <select class="form-control" id="exampleFormControlSelect1" required>
-                        <option>Elegir unidad</option>
+                            <option>Elegir unidad</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <select class="form-control" id="exampleFormControlSelect1" required>
-                        <option>Elegir CAS</option>
+                            <option>Elegir CAS</option>
                         </select>
                     </div>
                 </div>
@@ -168,7 +172,7 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
     <!-- Final Modal registrar empleado -->
     <!-- Modal editar empleado -->
     <div class="modal fade" id="modalEditarEmpleado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -189,10 +193,10 @@
                         <input type="text" class="form-control" placeholder="Apellido(s)" required>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" id="datepicker2" placeholder="Fecha de nacimiento"/>
+                        <input class="form-control" id="datepicker2" placeholder="Fecha de nacimiento" />
                     </div>
-                            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Dirección" required>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Dirección" required>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Telefono" required>
@@ -201,26 +205,26 @@
                         <input type="email" class="form-control" placeholder="Correo electronico" required>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" id="datepicker3" placeholder="Fecha de ingreso"/>
+                        <input class="form-control" id="datepicker3" placeholder="Fecha de ingreso" />
                     </div>
                     <div class="form-group">
                         <select class="form-control" id="exampleFormControlSelect1" required>
-                        <option>Elegir un cargo</option>
+                            <option>Elegir un cargo</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <select class="form-control" id="exampleFormControlSelect1" required>
-                        <option>Elegir situacion</option>
+                            <option>Elegir situacion</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <select class="form-control" id="exampleFormControlSelect1" required>
-                        <option>Elegir unidad</option>
+                            <option>Elegir unidad</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <select class="form-control" id="exampleFormControlSelect1" required>
-                        <option>Elegir CAS</option>
+                            <option>Elegir CAS</option>
                         </select>
                     </div>
                 </div>
@@ -230,7 +234,7 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
     <!-- Final Modal editar empleado -->
     <!-- Modal vacaciones empleado -->
     <div class="modal fade" id="modalVacaciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -245,10 +249,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input class="form-control" id="datepicker4" placeholder="Fecha de inicio"/>
+                        <input class="form-control" id="datepicker4" placeholder="Fecha de inicio" />
                     </div>
                     <div class="form-group">
-                        <input class="form-control" id="datepicker5" placeholder="Fecha fin"/>
+                        <input class="form-control" id="datepicker5" placeholder="Fecha fin" />
                     </div>
                     <div class="form-group">
                         <textarea class="form-control" rows="5" id="comment" placeholder="Observación"></textarea>
@@ -263,7 +267,7 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
     <!-- Final Modal vacaciones -->
     <!-- Modal permiso -->
     <div class="modal fade" id="modalPermiso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -280,10 +284,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input class="form-control" id="datepicker6" placeholder="Fecha de inicio"/>
+                        <input class="form-control" id="datepicker6" placeholder="Fecha de inicio" />
                     </div>
                     <div class="form-group">
-                        <input class="form-control" id="datepicker7" placeholder="Fecha fin"/>
+                        <input class="form-control" id="datepicker7" placeholder="Fecha fin" />
                     </div>
                     <div class="form-group">
                         <textarea class="form-control" rows="5" id="comment" placeholder="Observación"></textarea>
@@ -298,7 +302,7 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
     <!-- Final Modal permiso-->
     <?php 
         include '../layout/script.php';    

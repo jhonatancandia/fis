@@ -13,15 +13,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a href="../../">
                         <img src="../../public/img/logo.png" alt="Logo index" width="40" height="40">
                     </a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="#"></a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="personal">PERSONAL</a>
                 </li>
                 <li class="nav-item">
@@ -36,7 +36,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="situacion">SITUACION</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="beneficio">BENEFICIO</a>
                 </li>
                 <li class="nav-item">
@@ -49,7 +49,21 @@
         </div>
     </nav>
     <!-- Fin menu navegacion -->
-    <!-- Tabla de cargo -->
+    <!-- Alertas -->
+    <div class= "alert alert-danger alert-dismissible fade show oculto" id="error-reg" role="alert">
+        <span class="mensaje-alerta">Error en registro</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class= "alert alert-warning alert-dismissible fade show oculto" id="falt-camp" role="alert">
+        <span class="mensaje-alerta">Debe ingresar todos los campos solicitados</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <!-- Fin de Alertas -->
+    <!-- Tabla de beneficio -->
     <div class="container mt-5">
         <div class="d-flex justify-content-center">
             <div class="col-10" style="padding : 0;">
@@ -57,7 +71,7 @@
                 <div class="row mt-5">
                     <div class="col">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Buscar...">
+                            <input type="text" class="form-control" placeholder="Buscar..." required>
                         </div>
                     </div>
                     <div class="col">
@@ -69,104 +83,153 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-hover mt-2">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="text-center">BENEFICIO</th>
-                            <th scope="col" class="text-center">DESCRIPCION</th>
-                            <th scope="col" class="text-center">ACCIONES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                            <td class="text-center">Lactancia</td>
-                            <td class="text-center">Es el tiempo que empieza desde el nacimiento del bebe</td>
-                            <td class="text-center">
-                            <a href="" title="Editar" data-toggle="modal" data-target="#modalEditar"><i class="far fa-edit"></i></a>
-                                <a href="" title="Eliminar" data-toggle="tooltip" data-placement="top"><i class="far fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-hover mt-2">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">BENEFICIO</th>
+                                <th scope="col" class="text-center">DESCRIPCION</th>
+                                <th scope="col" class="text-center">ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                require_once '../../models/Beneficio.php';
+                                $beneficio = new Beneficio();
+                                $beneficio = $beneficio->read();
+                                foreach ($beneficio as $bene) {
+                            ?>
+                                <tr>
+                                    <td class="text-center"><?php echo $bene['tipo_beneficio'];?></td>
+                                    <td class="text-center"><?php echo $bene['descripcion'];?></td>
+                                    <td class="text-center">
+                                        <a href="" title="Editar" data-toggle="modal" data-target="#modalEditar<?= $bene['cod_beneficio'];?>"><i
+                                                class="far fa-edit"></i></a>
+                                        <a href="" title="Eliminar" data-toggle="modal" data-target="#modalEliminar<?= $bene['cod_beneficio'];?>"><i
+                                                class="far fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                                <!-- Modal editar beneficio -->
+                                <form action="../../controllers/beneficio.php" method="post">
+                                    <div class="modal fade" id="modalEditar<?= $bene['cod_beneficio'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">EDITAR BENEFICIO</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                        <?php
+                                                            $datos = new Beneficio();
+                                                            $datos = $datos->getDatos($bene['cod_beneficio']);
+                                                            foreach ($datos as $valor){
+                                                        ?>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="beneficio_e" value=
+                                                            "<?= $valor['tipo_beneficio']?>" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" name="descripcion_e" rows="5" id="comment" required><?= $valor['descripcion']?></textarea>
+                                                        </div>
+                                                            <input type="hidden" value="<?= $valor['cod_beneficio']?>" name="cod">
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                    <button type="submit" class="btn btn-primary" name="editar">Guardar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- Final Modal editar beneficio -->
+                                <!-- Modal eliminar beneficio -->
+                                <form action="../../controllers/beneficio.php" method="post">
+                                    <div class="modal fade" tabindex="-1" role="dialog" id="modalEliminar<?= $bene['cod_beneficio'];?>">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">¿Estas seguro que deseas eliminar?</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <input type="hidden" value="<?= $bene['cod_beneficio'];?>" name="cod_el">
+                                                <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+                                                <button type="submit" name="eliminar" class="btn btn-danger" >Si</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- Final Modal eliminar beneficio -->
+                            <?php
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
     <!-- Fin Tabla de beneficio -->
     <!-- Modal registrar beneficio -->
-    <div class="modal fade" id="modalNuevoCargo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">NUEVO BENEFICIO</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Beneficio" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="5" id="comment" placeholder="Descripción"></textarea>
-                        </div>
+    <form action="../../controllers/beneficio.php" method="post">
+        <div class="modal fade" id="modalNuevoCargo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">NUEVO BENEFICIO</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Registrar</button>
+                    <div class="modal-body">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Beneficio" name="beneficio" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="5" id="comment" placeholder="Descripción" name="descripcion" required></textarea>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" name="registrar">Registrar</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-</div>
-    <script>
-            $(function () {
-                $('#datetimepicker4').datetimepicker({
-                    format: 'L'
-                });
-            });
-    </script>
+    </form>
     <!-- Final Modal registrar beneficio -->
-    <!-- Modal editar beneficio -->
-    <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">EDITAR BENEFICIO</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Beneficio" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="5" id="comment" placeholder="Descripción"></textarea>
-                        </div>
-                    </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-</div>
-    <script>
-            $(function () {
-                $('#datetimepicker4').datetimepicker({
-                    format: 'L'
-                });
-            });
-    </script>
-        
-    <!-- Final Modal editar beneficio -->
+    <?php
+        if (!empty($_REQUEST)){
+            if ($_REQUEST[base64_decode('res')] == base64_decode('error_query')) {     
+    ?>
+                        <style>
+                            #error-reg{
+                                display:block;
+                            }
+                        </style>    
+    <?php   
+            }
+            if ($_REQUEST[base64_decode('res')] == base64_decode('falta_datos')) {
+    ?>
+                   <style>
+                       #falt-camp{
+                           display:block;
+                       }
+                   </style>      
+    <?php
+            }
+        }
+    ?>
     <?php 
         include '../layout/script.php';    
     ?>

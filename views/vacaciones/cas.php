@@ -49,8 +49,8 @@
         </div>
     </nav>
     <!-- Fin menu navegacion -->
-     <!-- Tabla cas -->
-     <div class="container mt-5">
+    <!-- Tabla cas -->
+    <div class="container mt-5">
         <div class="d-flex justify-content-center">
             <div class="col-10" style="padding : 0;">
                 <h5 class="text-center">CAS</h5>
@@ -84,8 +84,10 @@
                             <td class="text-center">5</td>
                             <td class="text-center">15</td>
                             <td class="text-center">
-                                <a href="" title="Editar" data-toggle="modal" data-target="#modalEditarCas"><i class="far fa-edit"></i></a>
-                                <a href="" title="Eliminar" data-toggle="tooltip" data-placement="top"><i class="far fa-trash-alt"></i></a>
+                                <a href="" title="Editar" data-toggle="modal" data-target="#modalEditarCas"><i
+                                        class="far fa-edit"></i></a>
+                                <a href="" title="Eliminar" data-toggle="tooltip" data-placement="top"><i
+                                        class="far fa-trash-alt"></i></a>
                             </td>
                         </tr>
 
@@ -96,7 +98,8 @@
     </div>
     <!-- Fin Tabla cas -->
     <!-- Modal registrar nuevo cas -->
-    <div class="modal fade" id="modalNuevoCas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalNuevoCas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -106,7 +109,6 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Inicio" required>
                         </div>
@@ -116,7 +118,7 @@
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Dias de vacación" required>
                         </div>
-                    </div>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     <button type="button" class="btn btn-primary">Registrar</button>
@@ -126,7 +128,8 @@
     </div>
     <!-- Final Modal registrar cas -->
     <!-- Modal editar cas -->
-    <div class="modal fade" id="modalEditarCas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalEditarCas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -136,7 +139,6 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Inicio" required>
                         </div>
@@ -146,7 +148,7 @@
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Dias de vacación" required>
                         </div>
-                    </div>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     <button type="button" class="btn btn-primary">Guardar</button>
@@ -159,4 +161,5 @@
         include '../layout/script.php';    
     ?>
 </body>
+
 </html>

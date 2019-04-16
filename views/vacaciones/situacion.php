@@ -13,15 +13,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a href="../../">
                         <img src="../../public/img/logo.png" alt="Logo index" width="40" height="40">
                     </a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="#"></a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="personal">PERSONAL</a>
                 </li>
                 <li class="nav-item">
@@ -33,7 +33,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="unidad">UNIDAD</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="">SITUACION</a>
                 </li>
                 <li class="nav-item">
@@ -49,6 +49,20 @@
         </div>
     </nav>
     <!-- Fin menu navegacion -->
+    <!-- Alertas -->
+    <div class="alert alert-danger alert-dismissible fade show oculto" id="error-reg" role="alert">
+        <span class="mensaje-alerta">Error en registro</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="alert alert-warning alert-dismissible fade show oculto" id="falt-camp" role="alert">
+        <span class="mensaje-alerta">Debe ingresar todos los campos solicitados</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <!-- Fin Alertas-->
     <!-- Tabla situacion -->
     <div class="container mt-5">
         <div class="d-flex justify-content-center">
@@ -69,104 +83,152 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-hover mt-2">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="text-center">SITUACION</th>
-                            <th scope="col" class="text-center">DESCRIPCION</th>
-                            <th scope="col" class="text-center">ACCIONES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="text-center">Eventual</td>
-                            <td class="text-center">Consiste por estar en un tiempo determinando trabajando en la institucion</td>
-                            <td class="text-center">
-                            <a href="" title="Editar" data-toggle="modal" data-target="#modalEditar"><i class="far fa-edit"></i></a>
-                                <a href="" title="Eliminar" data-toggle="tooltip" data-placement="top"><i class="far fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">SITUACION</th>
+                                <th scope="col" class="text-center">DESCRIPCION</th>
+                                <th scope="col" class="text-center">ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                                require_once '../../models/situacion.php'; 
+                                $situ = new Situacion();
+                                $situacion = $situ->read();
+                                foreach ($situacion as $sit) {
+                            ?>
+                                <tr>
+                                    <td class="text-center"><?= $sit['tipo_situacion'];?></td>
+                                    <td class="text-center"><?= $sit['descripcion']; ?></td>
+                                    <td class="text-center">
+                                        <a href="" title="Editar" data-toggle="modal" data-target="#modalEditar<?= $sit['cod_situacion'];?>"><i
+                                                class="far fa-edit"></i></a>
+                                        <a href="" title="Eliminar" data-toggle="modal" data-target="#modalEliminar<?= $sit['cod_situacion'];?>"><i
+                                                class="far fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                                <!-- Modal editar situacion -->
+                                <form action="../../controllers/situacion.php" method="post">
+                                    <div class="modal fade" id="modalEditar<?= $sit['cod_situacion'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">EDITAR SITUACION</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <?php 
+                                                        $datos = new Situacion();
+                                                        $datos = $datos->getDatos($sit['cod_situacion']);            
+                                                        foreach ($datos as $valor) {
+                                                    ?>   
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" value="<?= $valor['tipo_situacion'];?>" name="situacion_e" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <textarea class="form-control" rows="5" id="comment" name="descripcion_e" required><?= $valor['descripcion'];?></textarea>
+                                                            </div>
+                                                            <input type="hidden" value="<?= $valor['cod_situacion']?>" name="cod">
+                                                    <?php     
+                                                        } 
+                                                    ?>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                    <button type="submit" class="btn btn-primary" name="editar">Guardar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- Final Modal editar situacion -->
+                                <!-- Modal eliminar situacion -->
+                                <form action="../../controllers/situacion.php" method="post">
+                                    <div class="modal fade" tabindex="-1" role="dialog" id="modalEliminar<?= $sit['cod_situacion'];?>">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">¿Esta seguro que desea eliminar?</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+                                                <input type="hidden" value="<?= $sit['cod_situacion'];?>" name="cod_el">
+                                                <button type="submit" name="eliminar" class="btn btn-danger">Si</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- Fin Modal eliminar situacion-->
+                            <?php        
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
     <!-- Fin Tabla situacion -->
-    <!-- Modal registrar empleado -->
-    <div class="modal fade" id="modalNuevaSituacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">NUEVA SITUACION</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Nombre de situación" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="5" id="comment" placeholder="Descripción"></textarea>
-                        </div>
+    <!-- Modal registrar situacion -->
+    <form action="../../controllers/situacion.php" method="post"> 
+        <div class="modal fade" id="modalNuevaSituacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">NUEVA SITUACION</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Registrar</button>
+                    <div class="modal-body">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nombre de situación" name="situacion" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="5" id="comment" placeholder="Descripción" name="descripcion" required></textarea>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" name="registrar">Registrar</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-</div>
-    <script>
-            $(function () {
-                $('#datetimepicker4').datetimepicker({
-                    format: 'L'
-                });
-            });
-    </script>
-    <!-- Final Modal registrar empleado -->
-    <!-- Modal editar situacion -->
-    <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">EDITAR SITUACION</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Nombre de situación" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="5" id="comment" placeholder="Descripción"></textarea>
-                        </div>
-                    </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-</div>
-    <script>
-            $(function () {
-                $('#datetimepicker4').datetimepicker({
-                    format: 'L'
-                });
-            });
-    </script>
-    <!-- Final Modal editar situacion -->
+    </form>
+    <!-- Final Modal registrar situacion -->
+    <?php 
+        if(!empty($_REQUEST)){
+            if($_REQUEST[base64_encode('res')] == base64_encode('error_query')){
+    ?>
+                <style>
+                    #error-reg{
+                        display:block;
+                    }                
+                </style>
+    <?php        
+            }
+            if($_REQUEST[base64_encode('res')] == base64_encode('falta_datos')){
+    ?>
+                <style>
+                    #falt-camp{
+                        display:block;
+                    }
+                </style>
+    <?php
+            }
+        }
+    ?>   
     <?php 
         include '../layout/script.php';    
     ?>
