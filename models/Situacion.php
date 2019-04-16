@@ -1,5 +1,5 @@
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT'].'fiscalia/config/Database.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/fiscalia/config/Database.php';
 
     class Situacion{
         private $tipo_situacion;
