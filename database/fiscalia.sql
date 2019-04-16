@@ -39,9 +39,6 @@ CREATE TABLE `beneficio` (
 -- Volcado de datos para la tabla `beneficio`
 --
 
-INSERT INTO `beneficio` (`cod_beneficio`, `tipo_beneficio`, `descripcion`, `estado`) VALUES
-(1, '', '', 0),
-(2, 'KARE', 'ERA ESO', 0);
 
 -- --------------------------------------------------------
 
@@ -247,15 +244,6 @@ CREATE TABLE `situacion` (
 -- Volcado de datos para la tabla `situacion`
 --
 
-INSERT INTO `situacion` (`cod_situacion`, `tipo_situacion`, `descripcion`, `estado`) VALUES
-(1, 'Prueba ', 'de kaka', 0),
-(2, 'Prueba aaaa', 'loquilla mari y karen', 0),
-(3, 'aaa', 'aax', 0),
-(4, 'kaka', 'loka\r\n', 0),
-(5, 'kakitar', 'loka\r\n', 0),
-(6, 'mari', 'la loka ', 0),
-(7, 'nopor', 'en internet', 0),
-(8, 'mari', 'deja de ver mi polla', 1);
 
 -- --------------------------------------------------------
 
