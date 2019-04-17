@@ -87,7 +87,7 @@
                     <thead>
                         <tr>
                             <th scope="col" class="text-center">ITEM</th>
-                            <th scope="col" class="text-center">NOMBRE DE CARGO</th>
+                            <th scope="col" class="text-center">CARGO</th>
                             <th scope="col" class="text-center">ACCIONES</th>
                         </tr>
                     </thead>
@@ -128,9 +128,11 @@
                                                 foreach ($datos as $valor) {
                                             ?>
                                                 <div class="form-group">
+                                                    <label for="nro_item_e">Item</label>
                                                     <input type="text" class="form-control" value="<?= $valor['nro_item'];?>" name="nro_item_e" required>
                                                 </div>
                                                 <div class="form-group">
+                                                    <label for="tipo_cargo_e">Cargo</label>
                                                     <input type="text" class="form-control" value="<?= $valor['tipo_cargo'];?>" name="tipo_cargo_e" required>
                                                 </div>
                                                 <input type="hidden" value="<?= $valor['nro_item'];?>" name="cod">

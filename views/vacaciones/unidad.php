@@ -130,12 +130,15 @@
                                                     foreach ($datos as $valor) {
                                                 ?>
                                                     <div class="form-group">
+                                                        <label for="nombre_unidad_e">Unidad</label>
                                                         <input type="text" class="form-control" value="<?= $valor['nombre_unidad'];?>" name="nombre_unidad_e" required>
                                                     </div>
                                                     <div class="form-group">
+                                                        <label for="direccion_e">Dirección</label>
                                                         <input type="text" class="form-control" value="<?= $valor['direccion'];?>" name="direccion_e" required>
                                                     </div>
                                                     <div class="form-group">
+                                                        <label for="telefono_e">Telefono</label>
                                                         <input type="text" class="form-control" value="<?= $valor['telefono'];?>" name="telefono_e" required>
                                                     </div>
                                                         <input type="hidden" value="<?= $valor['cod_unidad'];?>" name="cod">
