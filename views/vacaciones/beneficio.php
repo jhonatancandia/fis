@@ -128,10 +128,12 @@
                                                             foreach ($datos as $valor){
                                                         ?>
                                                         <div class="form-group">
+                                                            <label for="beneficio_e">Beneficio</label>
                                                             <input type="text" class="form-control" name="beneficio_e" value=
                                                             "<?= $valor['tipo_beneficio']?>" required>
                                                         </div>
                                                         <div class="form-group">
+                                                            <label for="descripcion_e">Descripcion</label>
                                                             <textarea class="form-control" name="descripcion_e" rows="5" id="comment" required><?= $valor['descripcion']?></textarea>
                                                         </div>
                                                             <input type="hidden" value="<?= $valor['cod_beneficio']?>" name="cod">
