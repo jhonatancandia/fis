@@ -111,12 +111,12 @@
                                 </tr>
                                 <!-- Modal editar beneficio -->
                                 <form action="../../controllers/beneficio.php" method="post">
-                                    <div class="modal fade" id="modalEditar<?= $bene['cod_beneficio'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                    <div class="modal fade" id="modalEditar<?= $bene['cod_beneficio'];?>" tabindex="-1" role="dialog"
                                         aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">EDITAR BENEFICIO</h5>
+                                                    <h5 class="modal-title">EDITAR BENEFICIO</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -183,12 +183,12 @@
     <!-- Fin Tabla de beneficio -->
     <!-- Modal registrar beneficio -->
     <form action="../../controllers/beneficio.php" method="post">
-        <div class="modal fade" id="modalNuevoCargo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="modalNuevoCargo" tabindex="-1" role="dialog"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">NUEVO BENEFICIO</h5>
+                        <h5 class="modal-title">NUEVO BENEFICIO</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -210,29 +210,8 @@
         </div>
     </form>
     <!-- Final Modal registrar beneficio -->
-    <?php
-        if (!empty($_REQUEST)){
-            if ($_REQUEST[base64_decode('res')] == base64_decode('error_query')) {     
-    ?>
-                        <style>
-                            #error-reg{
-                                display:block;
-                            }
-                        </style>    
-    <?php   
-            }
-            if ($_REQUEST[base64_decode('res')] == base64_decode('falta_datos')) {
-    ?>
-                   <style>
-                       #falt-camp{
-                           display:block;
-                       }
-                   </style>      
-    <?php
-            }
-        }
-    ?>
     <?php 
+        include '../layout/error.php';
         include '../layout/script.php';    
     ?>
 </body>

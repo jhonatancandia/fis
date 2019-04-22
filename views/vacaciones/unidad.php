@@ -113,12 +113,12 @@
                             </tr>
                             <!-- Modal editar unidad -->
                             <form action="../../controllers/unidad.php" method="post">
-                                <div class="modal fade" id="modalEditarUnidad<?= $uni['cod_unidad'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                <div class="modal fade" id="modalEditarUnidad<?= $uni['cod_unidad'];?>" tabindex="-1" role="dialog"
                                     aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">EDITAR UNIDAD</h5>
+                                                <h5 class="modal-title">EDITAR UNIDAD</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -188,12 +188,12 @@
     <!-- Fin Tabla unidad -->
     <!-- Modal registrar nueva unidad -->
     <form action="../../controllers/unidad.php" method="post">
-        <div class="modal fade" id="modalNuevaUnidad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="modalNuevaUnidad" tabindex="-1" role="dialog"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">NUEVA UNIDAD</h5>
+                        <h5 class="modal-title">NUEVA UNIDAD</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -219,28 +219,7 @@
     </form>
     <!-- Final Modal registrar unidad -->
     <?php 
-        if(!empty($_REQUEST)){
-             if($_REQUEST[base64_encode('res')] == base64_encode('error_query')){
-    ?>
-                <style>
-                    #error-reg{
-                        display:block;
-                    }
-                </style>
-    <?php      
-            }
-            if($_REQUEST[base64_encode('res')] == base64_encode('falta_datos')){
-    ?>
-                <style>
-                    #falt-camp{
-                        display:block;
-                    }
-                </style>
-    <?php
-            }     
-        }
-    ?>
-    <?php 
+        include '../layout/error.php';
         include '../layout/script.php';    
     ?>
 </body>

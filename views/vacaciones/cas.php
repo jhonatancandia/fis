@@ -193,7 +193,7 @@
     <!-- Fin Tabla cas -->
     <!-- Modal registrar nuevo cas -->
     <form action="../../controllers/cas.php" method="post">
-        <div class="modal fade" id="modalNuevoCas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="modalNuevoCas" tabindex="-1" role="dialog"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -226,29 +226,8 @@
         </div>
     </form>
     <!-- Final Modal registrar cas -->
-    <?php
-        if (!empty($_REQUEST)){
-            if ($_REQUEST[base64_decode('res')] == base64_decode('error_query')) {     
-    ?>
-                        <style>
-                            #error-reg{
-                                display:block;
-                            }
-                        </style>    
-    <?php   
-            }
-            if ($_REQUEST[base64_decode('res')] == base64_decode('falta_datos')) {
-    ?>
-                   <style>
-                       #falt-camp{
-                           display:block;
-                       }
-                   </style>      
-    <?php
-            }
-        }
-    ?>
     <?php 
+        include '../layout/error.php';
         include '../layout/script.php';    
     ?>
 </body>

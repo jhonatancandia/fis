@@ -111,12 +111,12 @@
                                 </tr>
                                 <!-- Modal editar situacion -->
                                 <form action="../../controllers/situacion.php" method="post">
-                                    <div class="modal fade" id="modalEditar<?= $sit['cod_situacion'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                    <div class="modal fade" id="modalEditar<?= $sit['cod_situacion'];?>" tabindex="-1" role="dialog"
                                         aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">EDITAR SITUACION</h5>
+                                                    <h5 class="modal-title">EDITAR SITUACION</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -180,12 +180,12 @@
     <!-- Fin Tabla situacion -->
     <!-- Modal registrar situacion -->
     <form action="../../controllers/situacion.php" method="post"> 
-        <div class="modal fade" id="modalNuevaSituacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="modalNuevaSituacion" tabindex="-1" role="dialog"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">NUEVA SITUACION</h5>
+                        <h5 class="modal-title">NUEVA SITUACION</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -206,30 +206,9 @@
             </div>
         </div>
     </form>
-    <!-- Final Modal registrar situacion -->
+    <!-- Final Modal registrar situacion --> 
     <?php 
-        if(!empty($_REQUEST)){
-            if($_REQUEST[base64_encode('res')] == base64_encode('error_query')){
-    ?>
-                <style>
-                    #error-reg{
-                        display:block;
-                    }                
-                </style>
-    <?php        
-            }
-            if($_REQUEST[base64_encode('res')] == base64_encode('falta_datos')){
-    ?>
-                <style>
-                    #falt-camp{
-                        display:block;
-                    }
-                </style>
-    <?php
-            }
-        }
-    ?>   
-    <?php 
+        include '../layout/error.php';
         include '../layout/script.php';    
     ?>
 </body>

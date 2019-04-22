@@ -110,12 +110,12 @@
                         </tr>
                         <!-- Modal editar cargo -->
                         <form action="../../controllers/cargo.php" method="post">
-                            <div class="modal fade" id="modalEditar<?= $car['nro_item'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                            <div class="modal fade" id="modalEditar<?= $car['nro_item'];?>" tabindex="-1" role="dialog"
                                 aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">EDITAR CARGO</h5>
+                                            <h5 class="modal-title">EDITAR CARGO</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -181,12 +181,12 @@
     <!-- Fin Tabla de cargo -->
     <!-- Modal registrar cargo -->
     <form action="../../controllers/cargo.php" method="post">
-        <div class="modal fade" id="modalNuevoCargo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="modalNuevoCargo" tabindex="-1" role="dialog"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">NUEVO CARGO</h5>
+                        <h5 class="modal-title">NUEVO CARGO</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -209,28 +209,7 @@
     </form>
     <!-- Final Modal registrar cargo -->
     <?php 
-        if(!empty($_REQUEST)){
-             if($_REQUEST[base64_encode('res')] == base64_encode('error_query')){
-    ?>
-                <style>
-                    #error-reg{
-                        display:block;
-                    }
-                </style>
-    <?php      
-            }
-            if($_REQUEST[base64_encode('res')] == base64_encode('falta_datos')){
-    ?>
-                <style>
-                    #falt-camp{
-                        display:block;
-                    }
-                </style>
-    <?php
-            }     
-        }
-    ?>
-    <?php 
+        include '../layout/error.php';
         include '../layout/script.php';    
     ?>
 </body>
