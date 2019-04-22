@@ -14,10 +14,10 @@
             if ($benef->create($beneficio, $descripcion)){
                 header('Location: ../views/vacaciones/beneficio');
             }else{
-                header('Location: ../views/vacaciones/beneficio?'.base64_decode('error_query'));
+                header('Location: ../views/vacaciones/beneficio?'.base64_decode('res').'='.base64_decode('error_query'));
             }
         }else{
-            header('Location: ../views/vacaciones/beneficio?'.base64_decode('falta_datos'));
+            header('Location: ../views/vacaciones/beneficio?'.base64_decode('res').'='.base64_decode('falta_datos'));
         }
     }
 /** Fin de Seccion para registrar beneficio */
