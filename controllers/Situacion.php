@@ -14,10 +14,10 @@
             if($situacion->create($nombre, $descripcion)){
                 header('Location: ../views/vacaciones/situacion');
             }else{
-                header('Location: ../views/vacaciones/situacion?'.base64_encode('res').'='.base64_encode('error_query'));
+                header('Location: ../views/vacaciones/situacion?'.base64_decode('res').'='.base64_decode('error_query'));
             }
         }else{
-            header('Location: ../views/vacaciones/situacion?'.base64_encode('res').'='.base64_encode('falta_datos'));
+            header('Location: ../views/vacaciones/situacion?'.base64_decode('res').'='.base64_decode('falta_datos'));
         }
     }
     /* Fin Seccion para registrar la situacion */
@@ -36,10 +36,10 @@
             if($situ->update($situacion, $descripcion, $cod)){
                 header('Location: ../views/vacaciones/situacion');  
             }else{
-                header('Location: ../views/vacaciones/situacion?'.base64_encode('res').'='.base64_encode('error_query'));
+                header('Location: ../views/vacaciones/situacion?'.base64_decode('res').'='.base64_decode('error_query'));
             }
         }else{
-            header('Location: ../views/vacaciones/situacion?'.base64_encode('res').'='.base64_encode('falta_datos'));
+            header('Location: ../views/vacaciones/situacion?'.base64_decode('res').'='.base64_decode('falta_datos'));
         }
     }
     /* Fin Seccion para editar la situacion */
@@ -56,10 +56,10 @@
             if($situacion->delete($cod)){
                 header('Location: ../views/vacaciones/situacion'); 
             }else{
-                header('Location: ../views/vacaciones/situacion?'.base64_encode('res').'='.base64_encode('error_query'));
+                header('Location: ../views/vacaciones/situacion?'.base64_decode('res').'='.base64_decode('error_query'));
             }
         }else{
-            header('Location: ../views/vacaciones/situacion?'.base64_encode('res').'='.base64_encode('falta_datos'));
+            header('Location: ../views/vacaciones/situacion?'.base64_decode('res').'='.base64_decode('falta_datos'));
         }
     }
     /* Fin Seccion para eliminar la situacion */

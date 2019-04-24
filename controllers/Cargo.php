@@ -14,10 +14,10 @@
             if($cargo->create($nro_item, $tipo_cargo)){
                 header('Location: ../views/vacaciones/cargos');
             }else{
-                header('Location: ../views/vacaciones/cargos?'.base64_encode('res').'='.base64_encode('error_query'));
+                header('Location: ../views/vacaciones/cargos?'.base64_decode('res').'='.base64_decode('error_query'));
             }
         }else{
-            header('Location: ../views/vacaciones/cargos?'.base64_encode('res').'='.base64_encode('falta_datos'));
+            header('Location: ../views/vacaciones/cargos?'.base64_decode('res').'='.base64_decode('falta_datos'));
         }
     }
     /*Fin de la seccion para registrar el cargo */
@@ -36,10 +36,10 @@
             if($cargo->update($nro_item, $tipo_cargo, $cod)){
                 header('Location: ../views/vacaciones/cargos');
             }else{
-                header('Location: ../views/vacaciones/cargos?'.base64_encode('res').'='.base64_encode('error_query'));
+                header('Location: ../views/vacaciones/cargos?'.base64_decode('res').'='.base64_decode('error_query'));
             }
         }else{
-            header('Location: ../views/vacaciones/cargos?'.base64_encode('res').'='.base64_encode('falta_datos'));
+            header('Location: ../views/vacaciones/cargos?'.base64_decode('res').'='.base64_decode('falta_datos'));
         }
     }
     /*Fin de la seccion para registrar el cargo */
@@ -54,10 +54,10 @@
             if($cargo->delete($cod)){
                 header('Location: ../views/vacaciones/cargos');
             }else{
-                header('Location: ../views/vacaciones/cargos?'.base64_encode('res').'='.base64_encode('error_query'));
+                header('Location: ../views/vacaciones/cargos?'.base64_decode('res').'='.base64_decode('error_query'));
             }
         }else{
-            header('Location: ../views/vacaciones/cargos?'.base64_encode('res').'='.base64_encode('falta_datos'));
+            header('Location: ../views/vacaciones/cargos?'.base64_decode('res').'='.base64_decode('falta_datos'));
         }
     }
     /*Seccion para eliminar el cargo */

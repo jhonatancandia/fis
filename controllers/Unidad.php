@@ -15,10 +15,10 @@
             if($unidad->create($nombre_unidad, $direccion, $telefono)){
                 header('Location: ../views/vacaciones/unidad');
             }else{
-                header('Location: ../views/vacaciones/unidad?'.base64_encode('res').'='.base64_encode('error_query'));
+                header('Location: ../views/vacaciones/unidad?'.base64_decode('res').'='.base64_decode('error_query'));
             }
         }else{
-            header('Location: ../views/vacaciones/unidad?'.base64_encode('res').'='.base64_encode('falta_datos'));
+            header('Location: ../views/vacaciones/unidad?'.base64_decode('res').'='.base64_decode('falta_datos'));
         }
     }
     /*Fin de la seccion para registrar la unidad */
@@ -38,10 +38,10 @@
             if($unidad->update($nombre_unidad, $direccion, $telefono, $cod)){
                 header('Location: ../views/vacaciones/unidad');
             }else{
-                header('Location: ../views/vacaciones/unidad?'.base64_encode('res').'='.base64_encode('error_query'));
+                header('Location: ../views/vacaciones/unidad?'.base64_decode('res').'='.base64_decode('error_query'));
             }
         }else{
-            header('Location: ../views/vacaciones/unidad?'.base64_encode('res').'='.base64_encode('falta_datos'));
+            header('Location: ../views/vacaciones/unidad?'.base64_decode('res').'='.base64_decode('falta_datos'));
         }
     }
     /*Fin de la seccion para editar la unidad */
@@ -58,10 +58,10 @@
             if($unidad->delete($cod)){
                 header('Location: ../views/vacaciones/unidad');
             }else{
-                header('Location: ../views/vacaciones/unidad?'.base64_encode('res').'='.base64_encode('error_query'));
+                header('Location: ../views/vacaciones/unidad?'.base64_decode('res').'='.base64_decode('error_query'));
             }
         }else{
-            header('Location: ../views/vacaciones/unidad?'.base64_encode('res').'='.base64_encode('falta_datos'));
+            header('Location: ../views/vacaciones/unidad?'.base64_decode('res').'='.base64_decode('falta_datos'));
         }
     }
     /*Fin de la seccion para eliminar la unidad*/ 
