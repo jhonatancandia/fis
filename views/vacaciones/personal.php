@@ -107,7 +107,7 @@
                             ?>
                                     <tr>
                                         <td class="text-center"><?= $person['nombre'] ?></td>
-                                        <td class="text-center"><?= $person['tipo_cargo'] ?></td>
+                                        <td class="text-center"><?= $person['cargo'] ?></td>
                                         <td class="text-center"><?= $person['ci'] ?></td>
                                         <td class="text-center"><?= $person['direccion'] ?></td>
                                         <td class="text-center"><?= $person['telefono'] ?></td>
@@ -262,7 +262,7 @@
                                     $cargos = $cargo->read();
                                     foreach ($cargos as $carg) {
                                 ?>
-                                        <option value="<?= $carg['nro_item'] ?>"><?= $carg['tipo_cargo'] ?></option>
+                                        <option value="<?= $carg['nro_item'] ?>"><?= $carg['cargo'] ?></option>
                                 <?php
                                     } 
                                 ?>

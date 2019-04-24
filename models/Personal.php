@@ -54,7 +54,7 @@
             $conex = new Database();
             $conexion = $conex->connect();
             try {
-                $query = "SELECT e.nombre, c.tipo_cargo, e.ci, e.direccion, e.telefono, s.tipo_situacion, u.nombre_unidad, e.fecha_ingreso FROM 
+                $query = "SELECT e.nombre, c.cargo, e.ci, e.direccion, e.telefono, s.tipo_situacion, u.nombre_unidad, e.fecha_ingreso FROM 
                     empleado e, empleado_cargo ec, cargo c, empleado_situacion es, 
                     situacion s, empleado_unidad eu, unidad u 
                     WHERE e.ci = ec.ci AND c.nro_item = ec.nro_item AND
