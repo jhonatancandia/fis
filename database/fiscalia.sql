@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-04-2019 a las 21:24:01
+-- Tiempo de generación: 24-04-2019 a las 21:38:25
 -- Versión del servidor: 10.1.28-MariaDB
 -- Versión de PHP: 7.1.11
 
@@ -40,6 +40,7 @@ CREATE TABLE `beneficio` (
 --
 
 
+
 -- --------------------------------------------------------
 
 --
@@ -48,9 +49,16 @@ CREATE TABLE `beneficio` (
 
 CREATE TABLE `cargo` (
   `nro_item` int(11) NOT NULL,
-  `tipo_cargo` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `estado` tinyint(1) NOT NULL
+  `cargo` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `estado` tinyint(1) NOT NULL,
+  `cargo_tipo_cargo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `cargo`
+--
+
+
 
 -- --------------------------------------------------------
 
@@ -67,6 +75,11 @@ CREATE TABLE `cas` (
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `cas`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -82,8 +95,14 @@ CREATE TABLE `empleado` (
   `estado` tinyint(1) NOT NULL,
   `direccion` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
   `telefono` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `cod_usuario` int(11) NOT NULL
+  `fecha_ingreso` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `empleado`
+--
+
+
 
 -- --------------------------------------------------------
 
@@ -110,6 +129,12 @@ CREATE TABLE `empleado_cargo` (
   `ci` varchar(15) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `empleado_cargo`
+--
+
+
+
 -- --------------------------------------------------------
 
 --
@@ -122,6 +147,12 @@ CREATE TABLE `empleado_cas` (
   `fecha_inicio` date NOT NULL,
   `fecha_fin` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `empleado_cas`
+--
+
+
 
 -- --------------------------------------------------------
 
@@ -164,6 +195,12 @@ CREATE TABLE `empleado_situacion` (
   `fecha_fin` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `empleado_situacion`
+--
+
+
+
 -- --------------------------------------------------------
 
 --
@@ -176,6 +213,12 @@ CREATE TABLE `empleado_unidad` (
   `fecha_inicio` date NOT NULL,
   `fecha_fin` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `empleado_unidad`
+--
+
+
 
 -- --------------------------------------------------------
 
@@ -199,7 +242,8 @@ CREATE TABLE `empleado_vacacion` (
 CREATE TABLE `hoja_ruta` (
   `cod_ruta` int(11) NOT NULL,
   `objeto` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
-  `estado` varchar(100) COLLATE utf8_spanish2_ci NOT NULL
+  `estado` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
+  `fecha_ingreso` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
@@ -245,6 +289,26 @@ CREATE TABLE `situacion` (
 --
 
 
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_cargo`
+--
+
+CREATE TABLE `tipo_cargo` (
+  `cod_tipo_cargo` int(11) NOT NULL,
+  `tipo_cargo` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `tipo_cargo`
+--
+
+INSERT INTO `tipo_cargo` (`cod_tipo_cargo`, `tipo_cargo`) VALUES
+(1, 'Fiscal'),
+(2, 'Administrativo');
+
 -- --------------------------------------------------------
 
 --
@@ -258,6 +322,10 @@ CREATE TABLE `unidad` (
   `telefono` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `unidad`
+--
 
 -- --------------------------------------------------------
 
@@ -300,7 +368,8 @@ ALTER TABLE `beneficio`
 -- Indices de la tabla `cargo`
 --
 ALTER TABLE `cargo`
-  ADD PRIMARY KEY (`nro_item`);
+  ADD PRIMARY KEY (`nro_item`),
+  ADD KEY `cargo_tipo_cargo` (`cargo_tipo_cargo`);
 
 --
 -- Indices de la tabla `cas`
@@ -312,8 +381,7 @@ ALTER TABLE `cas`
 -- Indices de la tabla `empleado`
 --
 ALTER TABLE `empleado`
-  ADD PRIMARY KEY (`ci`),
-  ADD UNIQUE KEY `cod_usuario` (`cod_usuario`);
+  ADD PRIMARY KEY (`ci`);
 
 --
 -- Indices de la tabla `empleado_beneficio`
@@ -396,6 +464,12 @@ ALTER TABLE `situacion`
   ADD PRIMARY KEY (`cod_situacion`);
 
 --
+-- Indices de la tabla `tipo_cargo`
+--
+ALTER TABLE `tipo_cargo`
+  ADD PRIMARY KEY (`cod_tipo_cargo`);
+
+--
 -- Indices de la tabla `unidad`
 --
 ALTER TABLE `unidad`
@@ -428,7 +502,7 @@ ALTER TABLE `beneficio`
 -- AUTO_INCREMENT de la tabla `cas`
 --
 ALTER TABLE `cas`
-  MODIFY `cod_cas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_cas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `hoja_ruta`
@@ -455,10 +529,16 @@ ALTER TABLE `situacion`
   MODIFY `cod_situacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT de la tabla `tipo_cargo`
+--
+ALTER TABLE `tipo_cargo`
+  MODIFY `cod_tipo_cargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `unidad`
 --
 ALTER TABLE `unidad`
-  MODIFY `cod_unidad` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_unidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -477,10 +557,10 @@ ALTER TABLE `vacacion`
 --
 
 --
--- Filtros para la tabla `empleado`
+-- Filtros para la tabla `cargo`
 --
-ALTER TABLE `empleado`
-  ADD CONSTRAINT `empleado_ibfk_1` FOREIGN KEY (`cod_usuario`) REFERENCES `usuario` (`cod_usuario`);
+ALTER TABLE `cargo`
+  ADD CONSTRAINT `cargo_ibfk_1` FOREIGN KEY (`cargo_tipo_cargo`) REFERENCES `tipo_cargo` (`cod_tipo_cargo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `empleado_beneficio`

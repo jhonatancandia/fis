@@ -88,6 +88,7 @@
                         <tr>
                             <th scope="col" class="text-center">ITEM</th>
                             <th scope="col" class="text-center">CARGO</th>
+                            <th scope="col" class="text-center">TIPO DE CARGO</th>
                             <th scope="col" class="text-center">ACCIONES</th>
                         </tr>
                     </thead>
@@ -100,6 +101,7 @@
                         ?>
                         <tr>
                             <td class="text-center"><?= $car['nro_item'];?></td>
+                            <td class="text-center"><?= $car['cargo'];?></td>
                             <td class="text-center"><?= $car['tipo_cargo'];?></td>
                             <td class="text-center">
                                 <a href="" title="Editar" data-toggle="modal" data-target="#modalEditar<?= $car['nro_item'];?>"><i
@@ -133,7 +135,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="tipo_cargo_e">Cargo</label>
-                                                    <input type="text" class="form-control" value="<?= $valor['tipo_cargo'];?>" name="tipo_cargo_e" required>
+                                                    <input type="text" class="form-control" value="<?= $valor['cargo'];?>" name="tipo_cargo_e" required>
                                                 </div>
                                                 <input type="hidden" value="<?= $valor['nro_item'];?>" name="cod">
                                             <?php
@@ -192,12 +194,27 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Numero de item" name="nro_item" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Nombre del item" name="tipo_item" required>
-                            </div>          
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Numero de item" name="nro_item" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Nombre del cargo" name="cargo" required>
+                        </div>          
+                        <div class="form-group">
+                            <select class="form-control" name="tipo_cargo" required>
+                                <option>Elegir tipo de cargo</option>
+                                <?php 
+                                    require_once '../../models/Cargo_tipo.php';
+                                    $tipos_c = new Cargo_tipo();
+                                    $tipos = $tipos_c->read();
+                                    foreach ($tipos as $tipo) {
+                                ?>
+                                        <option value="<?= $tipo['cod_tipo_cargo'] ?>"><?= $tipo['tipo_cargo'] ?></option>
+                                <?php
+                                    }
+                                ?>
+                            </select>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
