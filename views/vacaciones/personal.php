@@ -185,7 +185,7 @@
                                         </div>
                                     </form>
                                     <!-- Final Modal editar empleado -->
-                                    <!-- Modal eliminar cas -->
+                                    <!-- Modal eliminar empleado -->
                                     <form action="../../controllers/personal.php" method="post">
                                         <div class="modal fade" tabindex="-1" role="dialog" id="modalEliminarEmpleado<?= $person['ci'] ?>">
                                             <div class="modal-dialog" role="document">
@@ -205,7 +205,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <!-- Final Modal eliminar cas -->
+                                    <!-- Final Modal eliminar empleado -->
                             <?php
                                 }
                             ?>
