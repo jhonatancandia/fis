@@ -151,7 +151,7 @@
                             </div>
                         </form>
                         <!-- Final Modal editar cargo -->
-                        <!-- Modal eliminar unidad -->
+                        <!-- Modal eliminar cargo -->
                         <form action="../../controllers/cargo.php" method="post">
                                 <div class="modal fade" id="modalEliminar<?= $car['nro_item'];?>" tabindex="-1" role="dialog">
                                     <div class="modal-dialog" role="document">
@@ -171,7 +171,7 @@
                                     </div>
                                 </div>
                         </form>
-                        <!-- Final Modal eliminar unidad -->
+                        <!-- Final Modal eliminar cargo -->
                         <?php
                             }
                         ?>
