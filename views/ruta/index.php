@@ -22,7 +22,7 @@
                     <a class="nav-link" href="#"></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="personal">PERSONAL</a>
+                    <a class="nav-link" href="../vacaciones/personal">PERSONAL</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../vacaciones/cargos">CARGOS</a>
