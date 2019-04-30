@@ -57,10 +57,9 @@
                 <div class="row mt-5">
                     <div class="col">
                         <div class="form-group text-right">
-                            <button type="button" class="btn btn-success" data-toggle="modal"
-                                data-target="#modalNuevaUnidad">
+                            <a href="../../controllers/reporte.php" class="btn btn-success">
                                 GENERAR EXCEL
-                            </button>
+                            </a>
                             <button type="button" class="btn btn-danger" data-toggle="modal"
                                 data-target="#modalNuevaUnidad">
                                 GENERAR PDF

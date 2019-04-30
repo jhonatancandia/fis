@@ -14,8 +14,4 @@
                 exit('Error: '.$e->getMessage());
             }
         }
-
-        public function generarExcel(){
-            
-        }
     }
