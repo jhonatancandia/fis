@@ -6,7 +6,7 @@
         private $nombres;
         private $apellidos;
         private $fecha_nac;
-        private $direccion;
+        private $celular;
         private $telefono;
         private $correo;
         private $fecha_ing;
@@ -20,7 +20,7 @@
             $this->nombres = '';
             $this->apellidos = '';
             $this->fecha_nac = '';
-            $this->direccion = '';
+            $this->celular = '';
             $this->telefono = '';
             $this->correo = '';
             $this->fecha_ing = '';
@@ -31,7 +31,7 @@
             $this->tabla = 'empleado';
         }
 
-        public function create($ci, $nombres, $apellidos, $fecha_nac, $correo, $direccion, $telefono, $fecha_ing){
+        public function create($ci, $nombres, $apellidos, $fecha_nac, $correo, $celular, $telefono, $fecha_ing){
             $conex = new Database();
             $conexion = $conex->connect();
             try {
@@ -40,10 +40,10 @@
                 $this->apellidos = $apellidos;
                 $this->fecha_nac = $fecha_nac;
                 $this->correo = $correo;
-                $this->direccion = $direccion;
+                $this->celular = $celular;
                 $this->telefono = $telefono;
                 $this->fecha_ing = $fecha_ing;
-                $query = "INSERT INTO $this->tabla (ci, nombre, apellidos, fecha_nacimiento, email, estado, direccion, telefono, fecha_ingreso) VALUES ('$this->ci', '$this->nombres', '$this->apellidos', '$this->fecha_nac', '$this->correo', true, '$this->direccion', '$this->telefono', '$this->fecha_ing')";
+                $query = "INSERT INTO $this->tabla (ci, nombre, apellidos, fecha_nacimiento, email, estado, celular, telefono, fecha_ingreso) VALUES ('$this->ci', '$this->nombres', '$this->apellidos', '$this->fecha_nac', '$this->correo', true, '$this->celular', '$this->telefono', '$this->fecha_ing')";
                 return $conexion->prepare($query)->execute();
             } catch (PDOException $e) {
                 exit("Error: ".$e->getMessage());
@@ -54,7 +54,7 @@
             $conex = new Database();
             $conexion = $conex->connect();
             try {
-                $query = "SELECT e.nombre, e.apellidos, c.cargo, e.ci, e.direccion, e.telefono, s.tipo_situacion, u.nombre_unidad, e.fecha_ingreso FROM 
+                $query = "SELECT e.nombre, e.apellidos, c.cargo, e.ci, e.celular, e.telefono, s.tipo_situacion, u.nombre_unidad, e.fecha_ingreso FROM 
                     empleado e, empleado_cargo ec, cargo c, empleado_situacion es, 
                     situacion s, empleado_unidad eu, unidad u 
                     WHERE e.ci = ec.ci AND c.nro_item = ec.nro_item AND
@@ -66,7 +66,7 @@
             }
         }
 
-        public function update($ci, $nombres, $apellidos, $fecha_nac, $direccion, $telefono, $correo, $fecha_ing){
+        public function update($ci, $nombres, $apellidos, $fecha_nac, $celular, $telefono, $correo, $fecha_ing){
             $conex = new Database();
             $conexion = $conex->connect();
             try {
@@ -75,12 +75,12 @@
                 $this->apellidos = $apellidos;
                 $this->fecha_nac = $fecha_nac;
                 $this->correo = $correo;
-                $this->direccion = $direccion;
+                $this->celular = $celular;
                 $this->telefono = $telefono;
                 $this->fecha_ing = $fecha_ing;
                 $query = "UPDATE $this->tabla SET 
                     nombre = '$this->nombres', apellidos = '$this->apellidos', 
-                    fecha_nacimiento = '$this->fecha_nac', email = '$this->correo', direccion = '$this->direccion', 
+                    fecha_nacimiento = '$this->fecha_nac', email = '$this->correo', celular = '$this->celular', 
                     telefono = '$this->telefono', fecha_ingreso = '$this->fecha_ing' WHERE ci = '$ci'";
                 return $conexion->prepare($query)->execute();
             } catch (PDOException $e) {

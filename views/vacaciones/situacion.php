@@ -159,9 +159,9 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body text-center">
-                                                <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
                                                 <input type="hidden" value="<?= $sit['cod_situacion'];?>" name="cod_el">
-                                                <button type="submit" name="eliminar" class="btn btn-danger">Si</button>
+                                                <button type="submit" name="eliminar" class="btn btn-success">Si</button>
                                             </div>
                                             </div>
                                         </div>

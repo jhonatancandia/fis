@@ -60,14 +60,6 @@
                             <a href="../../controllers/reporte.php" class="btn btn-success">
                                 GENERAR EXCEL
                             </a>
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                data-target="#modalNuevaUnidad">
-                                GENERAR PDF
-                            </button>
-                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                data-target="#modalNuevaUnidad">
-                                GENERAR WORD
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -88,7 +80,7 @@
                             <th>Tiempo de servicio</th>
                             <th>Duodecimas</th>
                             <th>Saldos pendientes</th>
-                            <th>Descuentos</th>
+                            <th>Uso de vacaciones</th>
                             <th>Saldo o total sin duodecimas</th>
                             </tr>
                         </thead>

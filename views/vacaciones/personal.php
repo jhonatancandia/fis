@@ -90,7 +90,7 @@
                                 <th scope="col" class="text-center">NOMBRE</th>
                                 <th scope="col" class="text-center">CARGO</th>
                                 <th scope="col" class="text-center">CI</th>
-                                <th scope="col" class="text-center">DIRECCION</th>
+                                <th scope="col" class="text-center">CELULAR</th>
                                 <th scope="col" class="text-center">TELEFONO</th>
                                 <th scope="col" class="text-center">SITUACION</th>
                                 <th scope="col" class="text-center">UNIDAD</th>
@@ -109,7 +109,7 @@
                                         <td class="text-center"><?= $person['nombre'] ?></td>
                                         <td class="text-center"><?= $person['cargo'] ?></td>
                                         <td class="text-center"><?= $person['ci'] ?></td>
-                                        <td class="text-center"><?= $person['direccion'] ?></td>
+                                        <td class="text-center"><?= $person['celular'] ?></td>
                                         <td class="text-center"><?= $person['telefono'] ?></td>
                                         <td class="text-center"><?= $person['tipo_situacion'] ?></td>
                                         <td class="text-center"><?= $person['nombre_unidad'] ?></td>
@@ -156,8 +156,8 @@
                                                                     <input type="text" class="form-control" value="<?= $persona['fecha_nacimiento'] ?>" name="fecha_nac_e" required>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="direccion_e">Dirección</label>
-                                                                    <input type="text" class="form-control" value="<?= $persona['direccion'] ?>" name="direccion_e" required>
+                                                                    <label for="direccion_e">Celular</label>
+                                                                    <input type="text" class="form-control" value="<?= $persona['celular'] ?>" name="celular_e" required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="telefono_e">Telefono</label>
@@ -198,8 +198,8 @@
                                                     </div>
                                                     <div class="modal-body text-center">
                                                         <input type="hidden" value="<?= $person['ci'] ?>" name="ci_el">
-                                                        <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
-                                                        <button type="submit" name="eliminar" class="btn btn-danger">Si</button>
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                                        <button type="submit" name="eliminar" class="btn btn-success">Si</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -242,7 +242,7 @@
                             <input class="form-control" id="datepicker0" placeholder="Fecha de nacimiento" name="fecha_nac" required/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Dirección" name="direccion" required>
+                            <input type="text" class="form-control" placeholder="Celular" name="celular" required>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Telefono" name="telefono" required>

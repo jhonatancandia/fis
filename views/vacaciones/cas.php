@@ -126,8 +126,8 @@
                                         </div>
                                         <div class="modal-body text-center">
                                             <input type="hidden" value="<?= $cs['cod_cas'];?>" name="cod_el">
-                                            <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
-                                            <button type="submit" name="eliminar" class="btn btn-danger" >Si</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                            <button type="submit" name="eliminar" class="btn btn-success" >Si</button>
                                         </div>
                                     </div>
                                 </div>

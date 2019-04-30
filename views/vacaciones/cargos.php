@@ -163,9 +163,9 @@
                                             </button>
                                         </div>
                                         <div class="modal-body text-center">
-                                            <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
                                             <input type="hidden" name="cod_el" value="<?= $car['nro_item'];?>">
-                                            <button type="submit" class="btn btn-danger" name="eliminar">Si</button>
+                                            <button type="submit" class="btn btn-success" name="eliminar">Si</button>
                                         </div>
                                         </div>
                                     </div>
