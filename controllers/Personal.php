@@ -10,11 +10,11 @@
         $ci = addslashes(strip_tags($_POST['ci']));
         $nombres = addslashes(strip_tags($_POST['nombres']));
         $apellidos = addslashes(strip_tags($_POST['apellidos']));
-        $fecha_nac = addslashes(strip_tags($_POST['fecha_nac']));
+        $fecha_nac = nuevaFecha(addslashes(strip_tags($_POST['fecha_nac'])));
         $celular = addslashes(strip_tags($_POST['celular']));
         $telefono = addslashes(strip_tags($_POST['telefono']));
         $correo = addslashes(strip_tags($_POST['correo']));
-        $fecha_ing = addslashes(strip_tags($_POST['fecha_ing']));
+        $fecha_ing = nuevaFecha(addslashes(strip_tags($_POST['fecha_ing'])));
         $cargo = addslashes(strip_tags($_POST['cargo']));
         $situacion = addslashes(strip_tags($_POST['situacion']));
         $unidad = addslashes(strip_tags($_POST['unidad']));
@@ -93,5 +93,17 @@
         }else{
             header('Location: ../views/vacaciones/personal?'.base64_decode('res').'='.base64_decode('falta_datos'));
         }
+    }
+
+    function nuevaFecha($fecha){
+        $nueva_fecha = "";
+        $date = explode("-", $fecha);
+        for ($i = count($date) - 1; $i >= 0; $i --) { 
+            if($i == 0)
+                $nueva_fecha = $nueva_fecha.$date[$i];
+            else
+                $nueva_fecha = $nueva_fecha.$date[$i]."-";
+        }
+        return $nueva_fecha;
     }
     /* Fin Seccion para eliminar la situacion */
