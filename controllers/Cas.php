@@ -3,16 +3,15 @@
     /** Seccion para registrar cas */
     if (isset($_POST['registrar'])) {
         $n_cas = addslashes(strip_tags($_POST['cas']));
-        $inicio = addslashes(strip_tags($_POST['inicio']));
-        $fin = addslashes(strip_tags($_POST['fin']));
+        $rango = addslashes(strip_tags($_POST['rango']));
         $dias = addslashes(strip_tags($_POST['dias']));
         
-        registrarCas($n_cas, $inicio, $fin, $dias);
+        registrarCas($n_cas, $rango, $dias);
     }
-    function registrarCas($n_cas, $inicio, $fin, $dias){
-        if(!empty($n_cas) and !empty($inicio) and !empty($fin) and !empty($dias)){
+    function registrarCas($n_cas, $rango, $dias){
+        if(!empty($n_cas) and !empty($rango) and !empty($dias)){
             $cas = new Cas();
-            if ($cas->create($n_cas, $inicio, $fin, $dias)){
+            if ($cas->create($n_cas, $rango, $dias)){
                 header('Location: ../views/vacaciones/cas');
             }else{
                 header('Location: ../views/vacaciones/cas?'.base64_decode('res').'='.base64_decode('error_query'));
@@ -26,18 +25,17 @@
     /** Seccion para editar cas */
     if (isset($_POST['editar'])){
         $e_cas = addslashes(strip_tags($_POST['cas_e']));
-        $inicio = addslashes(strip_tags($_POST['inicio_e']));
-        $fin = addslashes(strip_tags($_POST['fin_e']));
+        $rango = addslashes(strip_tags($_POST['rango_e']));
         $dias = addslashes(strip_tags($_POST['dias_e']));
         $cod_cas = addslashes(strip_tags($_POST['cod_cas']));
 
-        editarCas($e_cas, $inicio, $fin, $dias, $cod_cas);
+        editarCas($e_cas, $rango, $dias, $cod_cas);
     }
 
-    function editarCas($e_cas, $inicio, $fin, $dias, $cod_cas){
-        if(!empty($e_cas) and !empty($inicio) and !empty($fin) and !empty($dias) and !empty($cod_cas)){
+    function editarCas($e_cas, $rango, $dias, $cod_cas){
+        if(!empty($e_cas) and !empty($rango) and !empty($dias) and !empty($cod_cas)){
             $cs = new Cas();     
-            if ($cs->update($e_cas, $inicio, $fin, $dias, $cod_cas)){
+            if ($cs->update($e_cas, $rango, $dias, $cod_cas)){
                 header('Location: ../views/vacaciones/cas');
             }else{
                 header('Location: ../views/vacaciones/cas?'.base64_decode('res').'='.base64_decode('error_query'));

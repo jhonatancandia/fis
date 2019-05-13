@@ -3,28 +3,25 @@
 
     class Cas{
         private $cas;
-        private $inicio;
-        private $fin;
+        private $rango;
         private $dias;
         private $tabla;
 
         public function __construct(){
             $this->cas = '';
-            $this->inicio = '';
-            $this->fin = '';
+            $this->rango = '';
             $this->dias = '';
             $this->tabla = 'cas';
         }
 
-        public function create($cas, $inicio, $fin, $dias){
+        public function create($cas, $rango, $dias){
             $conex = new Database();
             $conexion = $conex->connect();
             try {
                 $this->cas = $cas;
-                $this->inicio = $inicio;
-                $this->fin = $fin;
+                $this->rango = $rango;
                 $this->dias = $dias;
-                $query = "INSERT INTO $this->tabla (cas, inicio, fin, dias, estado) VALUES ($this->cas, $this->inicio, $this->fin, $this->dias, true)";
+                $query = "INSERT INTO $this->tabla (cas, rango, dias, estado) VALUES ($this->cas, '$this->rango', $this->dias, true)";
                 return $conexion->prepare($query)->execute();
             } catch (PDOException $e) {
                 exit("Error: ".$e->getMessage());
@@ -47,22 +44,21 @@
             $conex = new Database();
             $conexion = $conex->connect();
             try {
-                $query = "SELECT cas, inicio, fin, dias FROM $this->tabla WHERE cod_cas = $cod_cas";
+                $query = "SELECT cas, rango, dias FROM $this->tabla WHERE cod_cas = $cod_cas";
                 return $conexion->query($query)->fetchAll();
             } catch (PDOException $e) {
                 exit("Error: ".$e->getMessage());
             }
         }
 
-        public function update($cas, $inicio, $fin, $dias, $cod_cas){
+        public function update($cas, $rango, $dias, $cod_cas){
             $conex = new Database();
             $conexion = $conex->connect();
             try {
                 $this->cas = $cas;
-                $this->inicio = $inicio;
-                $this->fin = $fin;
+                $this->rango = $rango;
                 $this->dias = $dias;
-                $query = "UPDATE $this->tabla SET cas = $this->cas, inicio = $this->inicio, fin = $this->fin, dias = $this->dias WHERE cod_cas = $cod_cas";
+                $query = "UPDATE $this->tabla SET cas = $this->cas, rango = '$this->rango', dias = $this->dias WHERE cod_cas = $cod_cas";
                 return $conexion->prepare($query)->execute();
             } catch (PDOException $e) {
                 exit("Error: ".$e->getMessage());

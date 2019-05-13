@@ -88,8 +88,7 @@
                     <thead>
                         <tr>
                             <th scope="col" class="text-center">CAS</th>
-                            <th scope="col" class="text-center">INICIO</th>
-                            <th scope="col" class="text-center">FIN</th>
+                            <th scope="col" class="text-center">RANGO</th>
                             <th scope="col" class="text-center">DIAS DE VACACION</th>
                             <th scope="col" class="text-center">ACCIONES</th>
                         </tr>
@@ -103,8 +102,7 @@
                     ?>
                     <tr>
                         <td class="text-center"><?= $cs['cas']; ?></td>
-                        <td class="text-center"><?= $cs['inicio']; ?></td>
-                        <td class="text-center"><?= $cs['fin'];?></td>
+                        <td class="text-center"><?= $cs['rango']; ?></td>
                         <td class="text-center"><?= $cs['dias'];?></td>
                         <td class="text-center">
                            <a href="" title="Editar" data-toggle="modal" data-target="#modalEditarCas<?= $cs['cod_cas'];?>"><i
@@ -155,13 +153,9 @@
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" name="cas_e" value="<?= $caas['cas'] ?>" required>
                                                     </div>
-                                                    <label for="inicio_e">Inicio</label>
+                                                    <label for="inicio_e">Rango</label>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" name="inicio_e" value="<?= $caas['inicio'] ?>" required>
-                                                    </div>
-                                                    <label for="fin_e">Fin</label>
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" name="fin_e" value="<?= $caas['fin'] ?>" required>
+                                                        <input type="text" class="form-control" name="rango_e" value="<?= $caas['rango'] ?>" required>
                                                     </div>
                                                     <label for="dias_e">Dias</label>
                                                     <div class="form-group">
@@ -208,10 +202,7 @@
                             <input type="text" class="form-control" name="cas" placeholder="Cas" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="inicio" placeholder="Inicio" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="fin" placeholder="Fin" required>
+                            <input type="text" class="form-control" name="rango" placeholder="Rango" required>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" name="dias" placeholder="Dias de vacacion" required>
