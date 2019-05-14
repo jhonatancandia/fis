@@ -300,14 +300,14 @@
                         </div>
                         <div class="form-group">
                             <select class="form-control" name="cas" required>
-                                <option>Elegir CAS</option>
+                                <option>Elegir rango CAS</option>
                                 <?php 
                                     require_once '../../models/cas.php';
                                     $cas = new Cas();
                                     $ca = $cas->read();
                                     foreach ($ca as $c) {
                                 ?>   
-                                        <option value="<?= $c['cod_cas'] ?>"><?= $c['cas'] ?></option>
+                                        <option value="<?= $c['cod_cas'] ?>"><?= $c['rango'] ?></option>
                                 <?php 
                                     }
                                 ?>
