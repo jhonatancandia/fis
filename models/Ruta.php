@@ -30,7 +30,7 @@
             $conex = new Database();
             $conexion = $conex->connect();
             try {
-                $query =  "SELECT hoja_ruta.cod_ruta, hoja_ruta.descripcion, hoja_ruta.fecha_ingreso, empleado.nombre, empleado.apellidos, cargo.cargo FROM hoja_ruta, empleado, empleado_hoja_ruta, cargo, empleado_cargo WHERE hoja_ruta.cod_ruta = empleado_hoja_ruta.cod_ruta AND empleado_hoja_ruta.ci = empleado.ci AND cargo.nro_item = empleado_cargo.nro_item AND empleado.ci = empleado_cargo.ci AND empleado.    estado = true";
+                $query =  "SELECT hoja_ruta.cod_ruta, hoja_ruta.descripcion, hoja_ruta.fecha_ingreso, empleado.nombre, empleado.apellidos, cargo.cargo FROM hoja_ruta, empleado, empleado_hoja_ruta, cargo, empleado_cargo WHERE hoja_ruta.estado = true AND hoja_ruta.cod_ruta = empleado_hoja_ruta.cod_ruta AND empleado_hoja_ruta.ci = empleado.ci AND cargo.nro_item = empleado_cargo.nro_item AND empleado.ci = empleado_cargo.ci AND empleado.estado = true";
                 return $conexion->query($query)->fetchAll();
             } catch (PDOException $e) {
                 exit("Error: ".$e->getMessage());
@@ -80,7 +80,6 @@
             $conexion = $conex->connect();
             try {
                 $query = "UPDATE $this->tabla SET estado = false WHERE cod_ruta = $cod_ruta";
-                echo $query;
                 return $conexion->prepare($query)->execute();
             } catch (PDOException $e) {
                 exit("Error: ".$e->getMessage());

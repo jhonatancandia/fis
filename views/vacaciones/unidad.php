@@ -42,10 +42,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../reportes/">REPORTES</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cas">CAS</a>
-                </li>
             </ul>
+            <a href="" class="navbar-text">SALIR</a>
         </div>
     </nav>
     <!-- Fin menu navegacion -->
@@ -95,7 +93,7 @@
                         </thead>
                         <tbody>
                             <?php 
-                                require_once '../../models/unidad.php';
+                                require_once '../../models/Unidad.php';
                                 $unid = new Unidad();
                                 $unidad = $unid->read();
                                 foreach ($unidad as $uni) {
@@ -112,7 +110,7 @@
                                 </td>
                             </tr>
                             <!-- Modal editar unidad -->
-                            <form action="../../controllers/unidad.php" method="post">
+                            <form action="../../controllers/Unidad.php" method="post">
                                 <div class="modal fade" id="modalEditarUnidad<?= $uni['cod_unidad'];?>" tabindex="-1" role="dialog"
                                     aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -156,7 +154,7 @@
                             </form>
                             <!-- Final Modal editar unidad -->
                             <!-- Modal eliminar unidad -->
-                            <form action="../../controllers/unidad.php" method="post">
+                            <form action="../../controllers/Unidad.php" method="post">
                                 <div class="modal fade" id="modalEliminarUnidad<?= $uni['cod_unidad'];?>" tabindex="-1" role="dialog">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -187,7 +185,7 @@
     </div>
     <!-- Fin Tabla unidad -->
     <!-- Modal registrar nueva unidad -->
-    <form action="../../controllers/unidad.php" method="post">
+    <form action="../../controllers/Unidad.php" method="post">
         <div class="modal fade" id="modalNuevaUnidad" tabindex="-1" role="dialog"
             aria-hidden="true">
             <div class="modal-dialog" role="document">

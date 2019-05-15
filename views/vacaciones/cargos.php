@@ -42,9 +42,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../reportes/">REPORTES</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cas">CAS</a>
-                </li>
+                <a href="" class="navbar-text">SALIR</a>
             </ul>
         </div>
     </nav>
@@ -94,7 +92,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            require_once '../../models/cargo.php';
+                            require_once '../../models/Cargo.php';
                             $carg = new Cargo();
                             $cargo = $carg->read();
                             foreach ($cargo as $car) {
@@ -111,7 +109,7 @@
                             </td>
                         </tr>
                         <!-- Modal editar cargo -->
-                        <form action="../../controllers/cargo.php" method="post">
+                        <form action="../../controllers/Cargo.php" method="post">
                             <div class="modal fade" id="modalEditar<?= $car['nro_item'];?>" tabindex="-1" role="dialog"
                                 aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -124,7 +122,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <?php
-                                                require_once '../../models/cargo.php';
+                                                require_once '../../models/Cargo.php';
                                                 $datos = new Cargo();
                                                 $datos = $datos->getDatos($car['nro_item']);
                                                 foreach ($datos as $valor) {
@@ -152,7 +150,7 @@
                         </form>
                         <!-- Final Modal editar cargo -->
                         <!-- Modal eliminar cargo -->
-                        <form action="../../controllers/cargo.php" method="post">
+                        <form action="../../controllers/Cargo.php" method="post">
                                 <div class="modal fade" id="modalEliminar<?= $car['nro_item'];?>" tabindex="-1" role="dialog">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -182,7 +180,7 @@
     </div>
     <!-- Fin Tabla de cargo -->
     <!-- Modal registrar cargo -->
-    <form action="../../controllers/cargo.php" method="post">
+    <form action="../../controllers/Cargo.php" method="post">
         <div class="modal fade" id="modalNuevoCargo" tabindex="-1" role="dialog"
             aria-hidden="true">
             <div class="modal-dialog" role="document">

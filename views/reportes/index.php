@@ -42,10 +42,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="">REPORTES</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../vacaciones/cas">CAS</a>
-                </li>
             </ul>
+            <a href="" class="navbar-text">SALIR</a>
         </div>
     </nav>
     <!-- Fin menu navegacion -->

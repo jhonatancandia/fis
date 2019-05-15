@@ -42,10 +42,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../reportes/">REPORTES</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cas">CAS</a>
-                </li>
             </ul>
+            <a href="" class="navbar-text">SALIR</a>
         </div>
     </nav>
     <!-- Fin menu navegacion -->
@@ -110,7 +108,7 @@
                                     </td>
                                 </tr>
                                 <!-- Modal editar beneficio -->
-                                <form action="../../controllers/beneficio.php" method="post">
+                                <form action="../../controllers/Beneficio.php" method="post">
                                     <div class="modal fade" id="modalEditar<?= $bene['cod_beneficio'];?>" tabindex="-1" role="dialog"
                                         aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -151,7 +149,7 @@
                                 </form>
                                 <!-- Final Modal editar beneficio -->
                                 <!-- Modal eliminar beneficio -->
-                                <form action="../../controllers/beneficio.php" method="post">
+                                <form action="../../controllers/Beneficio.php" method="post">
                                     <div class="modal fade" tabindex="-1" role="dialog" id="modalEliminar<?= $bene['cod_beneficio'];?>">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -182,7 +180,7 @@
     </div>
     <!-- Fin Tabla de beneficio -->
     <!-- Modal registrar beneficio -->
-    <form action="../../controllers/beneficio.php" method="post">
+    <form action="../../controllers/Beneficio.php" method="post">
         <div class="modal fade" id="modalNuevoCargo" tabindex="-1" role="dialog"
             aria-hidden="true">
             <div class="modal-dialog" role="document">

@@ -140,7 +140,7 @@
     </div>
     <!-- Fin Tabla usuarios -->
     <!-- Modal registrar usuarios -->
-    <form action="../../controllers/usuario.php" method="post">
+    <form action="../../controllers/Usuario.php" method="post">
         <div class="modal fade" id="modalNuevoEmpleado" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">

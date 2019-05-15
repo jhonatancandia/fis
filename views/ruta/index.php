@@ -42,10 +42,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">REPORTES</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../vacaciones/cas">CAS</a>
-                </li>
             </ul>
+            <a href="" class="navbar-text">SALIR</a>
         </div>
     </nav>
     <!-- Fin menu navegacion -->
@@ -97,7 +95,7 @@
                         </thead>
                         <tbody>
                             <?php 
-                                require_once '../../models/ruta.php'; 
+                                require_once '../../models/Ruta.php'; 
                                 $rut = new Ruta();
                                 $ruta = $rut->read();
                                 foreach ($ruta as $r) {
@@ -109,81 +107,11 @@
                                 <td class="text-center"><?= $r['descripcion'];?></td>
                                 <td class="text-center"><?=$r['cargo']?></td>
                                 <td class="text-center">
-                                    <a href="" title="Editar" data-toggle="modal"
-                                        data-target="#modalEditarRuta<?= $r['cod_ruta'];?>"><i
-                                            class="far fa-edit"></i></a>
                                     <a href="" title="Eliminar" data-toggle="modal"
                                         data-target="#modalEliminarRuta<?=$r['cod_ruta'];?>"><i
                                             class="far fa-trash-alt"></i></a>
                                 </td>
                             </tr>
-                            <!-- modal editar ruta-->
-                            <form action="../../controllers/ruta.php" method="post">
-                                <div class="modal fade" id="modalEditarRuta<?= $r['cod_ruta'];?>" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">EDITAR RUTA </h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <?php 
-                                                    $ruta = new Ruta();
-                                                    $rutas = $ruta->getDatos($r['cod_ruta']);
-                                                    foreach ($rutas as $rut) {
-                                                ?>
-                                                        <div class="form-group">
-                                                            <input class="form-control" id="datepicker2" placeholder="Fecha de ingreso" value="<?= $rut['fecha_ingreso']?>" name="fecha_ingreso" />
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <select class="form-control" name="procedencia" required>
-                                                                <option>Elegir procedencia</option>
-                                                                <?php
-                                                                    require_once '../../models/personal.php';
-                                                                    $personal = new Personal();
-                                                                    $personal = $personal->read();
-                                                                    foreach ($personal as $per){
-                                                                    ?>
-                                                                        <option value="<?= $per['ci']?>"><?= $per['nombre'].' '.$per['apellidos']?></option>
-                                                                <?php
-                                                                    }
-                                                                ?>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="descripcion_e">Descripcion</label>
-                                                            <textarea class="form-control" name="descripcion_e" rows="5" id="comment" required><?= $rut['descripcion']?></textarea>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <select class="form-control" name="derivado" required>
-                                                                <option>Elegir derivado</option>
-                                                                <?php
-                                                                    require_once '../../models/cargo.php';
-                                                                    $cargo = new Cargo();
-                                                                    $cargos = $cargo->read();
-                                                                    foreach ($cargos as $carg){
-                                                                    ?>
-                                                                        <option value="<?= $carg['nro_item']?>"><?= $carg['cargo']?></option>
-                                                                    <?php
-                                                                    }
-                                                                    ?>
-                                                                </select>
-                                                        </div>
-                                                <?php
-                                                }
-                                                ?>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                                <button type="submit" class="btn btn-primary" name="guardar">Guardar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            <!-- final de modal editar ruta-->
                             <!-- Modal eliminar ruta -->
                             <form action="../../controllers/Ruta.php" method="post">
                                 <div class="modal fade" tabindex="-1" role="dialog" id="modalEliminarRuta<?=$r['cod_ruta'];?>">
@@ -216,7 +144,7 @@
     </div>
     <!-- Fin Tabla ruta -->
     <!-- Modal registrar nueva ruta -->
-    <form action="../../controllers/ruta.php" method="post">
+    <form action="../../controllers/Ruta.php" method="post">
         <div class="modal fade" id="modalNuevaRuta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">

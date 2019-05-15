@@ -26,17 +26,14 @@
     function registrarPersonal($ci, $nombres, $apellidos, $fecha_nac, $celular, $telefono, $correo, $fecha_ing, $cargo, $situacion, $unidad, $cas){
         if(!empty($ci) and !empty($nombres) and !empty($apellidos) and !empty($fecha_nac) and !empty($celular) and !empty($telefono) and !empty($correo) and !empty($fecha_ing) and !empty($cargo) and !empty($situacion) and !empty($unidad) and !empty($cas)){
             $personal = new Personal();
-            if($personal->create($ci, $nombres, $apellidos, $fecha_nac, $correo, $celular, $telefono, $fecha_ing)){
+            if($personal->create($ci, $nombres, $apellidos, $fecha_nac, $correo, $celular, $telefono, $fecha_ing, $cas)){
                 $person_carg = new Personal_cargo();
                 if($person_carg->create($cargo, $ci)){
                     $person_sit = new Personal_situacion();
                     if($person_sit->create($situacion, $ci)){
                         $person_uni = new Personal_unidad();
                         if($person_uni->create($unidad, $ci)){
-                            $person_cas = new Personal_cas();
-                            if($person_cas->create($cas, $ci)){
-                                header('Location: ../views/vacaciones/personal');
-                            }
+                            header('Location: ../views/vacaciones/personal');
                         }
                     }
                 }
@@ -58,14 +55,14 @@
         $telefono = addslashes(strip_tags($_POST['telefono_e']));
         $correo = addslashes(strip_tags($_POST['correo_e']));
         $fecha_ing = addslashes(strip_tags($_POST['fecha_ing_e']));
-        
-        editarPersonal($ci, $nombres, $apellidos, $fecha_nac, $celular, $telefono, $correo, $fecha_ing);
+        $cas = addslashes(strip_tags($_POST['cas_e']));
+        editarPersonal($ci, $nombres, $apellidos, $fecha_nac, $celular, $telefono, $correo, $fecha_ing, $cas);
     }
 
-    function editarPersonal($ci, $nombres, $apellidos, $fecha_nac, $celular, $telefono, $correo, $fecha_ing){
-        if(!empty($ci) and !empty($nombres) and !empty($apellidos) and !empty($fecha_nac) and !empty($celular) and !empty($telefono) and !empty($correo) and !empty($fecha_ing)){
+    function editarPersonal($ci, $nombres, $apellidos, $fecha_nac, $celular, $telefono, $correo, $fecha_ing, $cas){
+        if(!empty($ci) and !empty($nombres) and !empty($apellidos) and !empty($fecha_nac) and !empty($celular) and !empty($telefono) and !empty($correo) and !empty($fecha_ing) and !empty($cas)){
             $person = new Personal();
-            if($person->update($ci, $nombres, $apellidos, $fecha_nac, $celular, $telefono, $correo, $fecha_ing)){
+            if($person->update($ci, $nombres, $apellidos, $fecha_nac, $celular, $telefono, $correo, $fecha_ing, $cas)){
                 header('Location: ../views/vacaciones/personal');  
             }else{
                 header('Location: ../views/vacaciones/personal?'.base64_decode('res').'='.base64_decode('error_query'));

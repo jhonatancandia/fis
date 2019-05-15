@@ -42,10 +42,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../reportes/">REPORTES</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cas">CAS</a>
-                </li>
             </ul>
+            <a href="" class="navbar-text">SALIR</a>
         </div>
     </nav>
     <!-- Fin menu navegacion -->
@@ -94,7 +92,7 @@
                         </thead>
                         <tbody>
                             <?php 
-                                require_once '../../models/situacion.php'; 
+                                require_once '../../models/Situacion.php'; 
                                 $situ = new Situacion();
                                 $situacion = $situ->read();
                                 foreach ($situacion as $sit) {
@@ -110,7 +108,7 @@
                                     </td>
                                 </tr>
                                 <!-- Modal editar situacion -->
-                                <form action="../../controllers/situacion.php" method="post">
+                                <form action="../../controllers/Situacion.php" method="post">
                                     <div class="modal fade" id="modalEditar<?= $sit['cod_situacion'];?>" tabindex="-1" role="dialog"
                                         aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -148,7 +146,7 @@
                                 </form>
                                 <!-- Final Modal editar situacion -->
                                 <!-- Modal eliminar situacion -->
-                                <form action="../../controllers/situacion.php" method="post">
+                                <form action="../../controllers/Situacion.php" method="post">
                                     <div class="modal fade" tabindex="-1" role="dialog" id="modalEliminar<?= $sit['cod_situacion'];?>">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -179,7 +177,7 @@
     </div>
     <!-- Fin Tabla situacion -->
     <!-- Modal registrar situacion -->
-    <form action="../../controllers/situacion.php" method="post"> 
+    <form action="../../controllers/Situacion.php" method="post"> 
         <div class="modal fade" id="modalNuevaSituacion" tabindex="-1" role="dialog"
             aria-hidden="true">
             <div class="modal-dialog" role="document">

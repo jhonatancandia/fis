@@ -28,32 +28,10 @@
         }
     }
     /* Fin Seccion para registrar ruta */
-    /*Seccion para editar ruta */
-    if(isset($_POST['editar'])){
-        $descripcion = addslashes(strip_tags($_POST['descripcion_e']));
-        $fecha_ingreso = addslashes(strip_tags($_POST['fecha_ingreso_e']));
-        $cod_ruta = addslashes(strip_tags($_POST['cod_ruta']));
-
-        editarRuta($descripcion, $fecha_ingreso, $cod_ruta);
-    }
-
-    function editarRuta($descripcion, $fecha_ingreso, $cod_ruta){
-        if(!empty($descripcion) and !empty($fecha_ingreso) and !empty($cod_ruta)){
-            $ruta = new Ruta();
-            if($ruta->update($descripcion, $fecha_ingreso, $cod_ruta)){
-                header('Location: ../views/ruta/index');
-            }else{
-                header('Location: ../views/ruta/index?'.base64_decode('res').'='.base64_decode('error_query'));
-            }
-        }else{
-            header('Location: ../views/ruta/index?'.base64_decode('res').'='.base64_decode('falta_datos'));
-        }
-    }
-    /*Fin de la seccion para editar ruta */
      /** Seccion para eliminar ruta */
      if (isset($_POST['eliminar'])){
         $cod_ruta = addslashes(strip_tags($_POST['cod_ruta_el']));
-
+        
         eliminarRuta($cod_ruta);
     }
 
@@ -61,12 +39,12 @@
         if (!empty($cod_ruta)) {
             $ru = new Ruta();
             if ($ru->delete($cod_ruta)) {
-                header('Location: ../views/ruta/index');
+                header('Location: ../views/ruta/');
             }else{
-                header('Location: ../views/ruta/index?'.base64_decode('res').'='.base64_decode('error_query'));
+                header('Location: ../views/ruta/?'.base64_decode('res').'='.base64_decode('error_query'));
             }
         }else{
-            header('Location: ../views/ruta/index?'.base64_decode('res').'='.base64_decode('falta_datos'));
+            header('Location: ../views/ruta/?'.base64_decode('res').'='.base64_decode('falta_datos'));
         }
 
     }

@@ -42,9 +42,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../reportes/">REPORTES</a>
                 </li>
-                <li class="nav- active">
-                    <a class="nav-link" href="cas">CAS</a>
-                </li>
+                <a href="" class="navbar-text">SALIR</a>
             </ul>
         </div>
     </nav>
@@ -133,7 +131,7 @@
                         </form>
                         <!-- Final Modal eliminar cas -->
                         <!-- Modal editar cas -->
-                        <form action="../../controllers/cas.php" method="post">
+                        <form action="../../controllers/Cas.php" method="post">
                             <div class="modal fade" id="modalEditarCas<?= $cs['cod_cas'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -186,7 +184,7 @@
     </div>
     <!-- Fin Tabla cas -->
     <!-- Modal registrar nuevo cas -->
-    <form action="../../controllers/cas.php" method="post">
+    <form action="../../controllers/Cas.php" method="post">
         <div class="modal fade" id="modalNuevoCas" tabindex="-1" role="dialog"
             aria-hidden="true">
             <div class="modal-dialog" role="document">

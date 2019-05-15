@@ -42,10 +42,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../reportes/">REPORTES</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cas">CAS</a>
-                </li>
             </ul>
+            <a href="" class="navbar-text">SALIR</a>
         </div>
     </nav>
     <!-- Fin menu navegacion -->
@@ -95,6 +93,7 @@
                                 <th scope="col" class="text-center">SITUACION</th>
                                 <th scope="col" class="text-center">UNIDAD</th>
                                 <th scope="col" class="text-center">FECHA INGRESO</th>
+                                <th scope="col" class="text-center">CAS</th>
                                 <th scope="col" class="text-center" width="300">ACCIONES</th>
                             </tr>
                         </thead>
@@ -114,6 +113,7 @@
                                         <td class="text-center"><?= $person['tipo_situacion'] ?></td>
                                         <td class="text-center"><?= $person['nombre_unidad'] ?></td>
                                         <td class="text-center"><?= $person['fecha_ingreso'] ?></td>
+                                        <td class="text-center"><?= $person['cas'] ?></td>
                                         <td class="text-center" width="300">
                                             <a href="" title="Editar" data-toggle="modal" data-target="#modalEditarEmpleado<?= $person['ci'] ?>"><i
                                                     class="far fa-edit"></i></a>
@@ -126,7 +126,7 @@
                                         </td>
                                     </tr>
                                     <!-- Modal editar empleado -->
-                                    <form action="../../controllers/personal.php" method="post">
+                                    <form action="../../controllers/Personal.php" method="post">
                                         <div class="modal fade" id="modalEditarEmpleado<?= $person['ci'] ?>" tabindex="-1" role="dialog"
                                             aria-hidden="true">
                                             <div class="modal-dialog" role="document">
@@ -171,6 +171,10 @@
                                                                     <label for="fecha_ing_e">Fecha ingreso</label>
                                                                     <input type="text" class="form-control" value="<?= $persona['fecha_ingreso'] ?>" name="fecha_ing_e" required>
                                                                 </div>
+                                                                <div class="form-group">
+                                                                    <label for="fecha_ing_e">CAS</label>
+                                                                    <input type="text" class="form-control" value="<?= $persona['cas'] ?>" name="cas_e" required>
+                                                                </div>
                                                                 <input type="hidden" value="<?= $person['ci']?>" name="ci_e">
                                                         <?php
                                                             }
@@ -186,7 +190,7 @@
                                     </form>
                                     <!-- Final Modal editar empleado -->
                                     <!-- Modal eliminar empleado -->
-                                    <form action="../../controllers/personal.php" method="post">
+                                    <form action="../../controllers/Personal.php" method="post">
                                         <div class="modal fade" tabindex="-1" role="dialog" id="modalEliminarEmpleado<?= $person['ci'] ?>">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
@@ -217,7 +221,7 @@
     </div>
     <!-- Fin Tabla empleados -->
     <!-- Modal registrar empleado -->
-    <form action="../../controllers/personal.php" method="post">
+    <form action="../../controllers/Personal.php" method="post">
         <div class="modal fade" id="modalNuevoEmpleado" tabindex="-1" role="dialog"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -257,7 +261,7 @@
                             <select class="form-control" name="cargo" required>
                                 <option>Elegir un cargo</option>
                                 <?php 
-                                    require_once '../../models/cargo.php'; 
+                                    require_once '../../models/Cargo.php'; 
                                     $cargo = new Cargo();
                                     $cargos = $cargo->read();
                                     foreach ($cargos as $carg) {
@@ -272,7 +276,7 @@
                             <select class="form-control" name="situacion" required>
                                 <option>Elegir situacion</option>
                                 <?php 
-                                    require_once '../../models/situacion.php';
+                                    require_once '../../models/Situacion.php';
                                     $situacion = new Situacion();
                                     $situaciones = $situacion->read();
                                     foreach ($situaciones as $sit) {
@@ -287,7 +291,7 @@
                             <select class="form-control" name="unidad" required>
                                 <option>Elegir unidad</option>
                                 <?php 
-                                    require_once '../../models/unidad.php';
+                                    require_once '../../models/Unidad.php';
                                     $unidad = new Unidad();
                                     $unidades = $unidad->read();
                                     foreach ($unidades as $unid) {
@@ -299,19 +303,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="form-control" name="cas" required>
-                                <option>Elegir rango CAS</option>
-                                <?php 
-                                    require_once '../../models/cas.php';
-                                    $cas = new Cas();
-                                    $ca = $cas->read();
-                                    foreach ($ca as $c) {
-                                ?>   
-                                        <option value="<?= $c['cod_cas'] ?>"><?= $c['rango'] ?></option>
-                                <?php 
-                                    }
-                                ?>
-                            </select>
+                            <input type="text" class="form-control" placeholder="CAS" name="cas" required>
                         </div>
                     </div>
                     <div class="modal-footer">
