@@ -164,7 +164,7 @@
                             <select class="form-control" name="procedencia" required>
                                 <option>Elegir procedencia</option>
                                 <?php
-                                    require_once '../../models/personal.php';
+                                    require_once '../../models/Personal.php';
                                     $personal = new Personal();
                                     $personal = $personal->read();
                                     foreach ($personal as $per){
@@ -183,7 +183,7 @@
                             <select class="form-control" name="derivado" required>
                                 <option>Elegir derivado</option>
                                 <?php
-                                    require_once '../../models/cargo.php';
+                                    require_once '../../models/Cargo.php';
                                     $cargo = new Cargo();
                                     $cargos = $cargo->read();
                                     foreach ($cargos as $carg){
