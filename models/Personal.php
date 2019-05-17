@@ -108,4 +108,14 @@
                 exit("Error: ".$e->getMessage());
             }
         }
+
+        public function personalSinCuenta(){
+            $conex = new Database();
+            $conexion = $conex->connect();
+            try {
+                $query = "SELECT FROM $this->tabla p, usuario u WHERE ";
+            } catch (PDOException $e) {
+                exit("Error: ".$e->getMessage());
+            }
+        }
     }
