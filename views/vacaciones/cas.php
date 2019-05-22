@@ -14,9 +14,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a href="../../">
-                        <img src="../../public/img/logo.png" alt="Logo index" width="40" height="40">
-                    </a>
+                    <img src="../../public/img/logo.png" alt="Logo index" width="40" height="40">
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"></a>

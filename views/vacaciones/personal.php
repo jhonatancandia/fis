@@ -2,6 +2,7 @@
 <html lang="en">
 <?php 
     include '../layout/head.php';
+    session_start();
 ?>
 
 <body>
@@ -14,9 +15,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a href="../../">
-                        <img src="../../public/img/logo.png" alt="Logo index" width="40" height="40">
-                    </a>
+                    <img src="../../public/img/logo.png" alt="Logo index" width="40" height="40">
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#"></a>
@@ -43,7 +42,7 @@
                     <a class="nav-link" href="../reportes/">REPORTES</a>
                 </li>
             </ul>
-            <a href="" class="navbar-text">SALIR</a>
+            <a href="../../controllers/Usuario.php?peticion=logout" class="navbar-text">SALIR</a>
         </div>
     </nav>
     <!-- Fin menu navegacion -->

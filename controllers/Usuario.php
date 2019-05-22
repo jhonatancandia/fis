@@ -1,6 +1,6 @@
 <?php 
     require_once '../models/Usuario.php';
-
+    session_start();
     /* Registrar usuario */
     if(isset($_POST['registrar'])){
         $username = addslashes(strip_tags($_POST['nombre_usuario']));
@@ -105,5 +105,39 @@
             }
         }else{
             header('Location: ../views/registrar?'.base64_decode('res').'='.base64_decode('falta_datos'));
+        }
+    }
+
+    /* Login usuario */
+    if(!empty($_REQUEST)){
+        if ($_REQUEST['peticion'] == "login") {
+            $username = addslashes(strip_tags($_POST['username']));
+            $password = addslashes(strip_tags($_POST['password']));
+            
+            login($username, $password);
+        }
+    }
+
+    function login($username, $password){
+        if(!empty($username) and !empty($password)){
+            $user = new Usuario();
+            $password = base64_encode($password);
+            if(count(($user->existeUsuario($username, $password))) > 0){
+                $_SESSION['pass'] = base64_decode($password);
+                $_SESSION['usuario'] = $username;
+                echo 'correcto';
+            }else{
+                echo 'El usuario no existe, porfavor vuelva a intentarlo';
+            }
+        }else{
+            echo 'Debe ingresar todos los datos';
+        }
+    }
+
+    /* Logout Login */
+    if(!empty($_REQUEST)){
+        if ($_REQUEST['peticion'] == "logout") {
+            session_destroy();
+            header('Location: ../');
         }
     }

@@ -99,4 +99,17 @@
                 exit("Error: ".$e->getMessage());
             }
         }
+
+        public function existeUsuario($username, $password){
+            $conex = new Database();
+            $conexion = $conex->connect();
+            try {
+                $this->username = $username;
+                $this->password = $password;
+                $query = "SELECT * FROM $this->tabla WHERE nombre_usuario = '$this->username' AND contrasenia = '$this->password'";
+                return $conexion->query($query)->fetchAll();
+            } catch (PDOException $e) {
+                exit("Error: ".$e->getMessage());
+            }
+        }
     }
