@@ -1,6 +1,6 @@
 function auth(){
     var password = prompt('Ingrese su contraseña');
-    if(password != ".fiscalia.2019.")
+    if(password != ".fiscalia.")
         auth();
 }
 
@@ -38,4 +38,4 @@ $(document).ready(function () {
     
 });
 
-//auth();
+auth();

@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+    if(empty($_SESSION)){
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,3 +39,8 @@
     <script src="public/js/auth.js"></script>
 </body>
 </html>
+<?php 
+    }else{
+        header('Location: views/vacaciones/personal');
+    }   
+?>

@@ -19,29 +19,43 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#"></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../vacaciones/personal">PERSONAL</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../vacaciones/cargos">CARGOS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="">RUTA</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../vacaciones/unidad">UNIDAD</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../vacaciones/situacion">SITUACION</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../vacaciones/beneficio">BENEFICIO</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">REPORTES</a>
-                </li>
+                <?php 
+                    if(!empty($_SESSION) and $_SESSION['rol'] == "administrador"){
+                ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../vacaciones/personal">PERSONAL</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../vacaciones/cargos">CARGOS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="ruta">RUTA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../vacaciones/unidad">UNIDAD</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../vacaciones/situacion">SITUACION</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../vacaciones/beneficio">BENEFICIO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">REPORTES</a>
+                        </li>
+                <?php
+                    }elseif (!empty($_SESSION) and $_SESSION['rol'] == "usuario") {
+                ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="">RUTA</a>
+                        </li>
+                <?php        
+                    }else{
+                        header('Location: ../../');
+                    }
+                ?>
             </ul>
-            <a href="" class="navbar-text">SALIR</a>
+            <a href="../../controllers/Usuario.php?peticion=logout" class="navbar-text">SALIR</a>
         </div>
     </nav>
     <!-- Fin menu navegacion -->

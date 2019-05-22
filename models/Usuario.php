@@ -112,4 +112,20 @@
                 exit("Error: ".$e->getMessage());
             }
         }
+
+        public function getTipoRol($username, $password){
+            $conex = new Database();
+            $conexion = $conex->connect();
+            try {
+                $this->username = $username;
+                $this->password = $password;
+                $query = "SELECT r.tipo_rol FROM usuario u, rol r WHERE u.nombre_usuario = '$this->username' AND u.contrasenia = '$this->password' AND u.cod_rol = r.cod_rol";
+                $rol = $conexion->query($query)->fetchAll();
+                foreach ($rol as $tipo_rol) {
+                    return $tipo_rol['tipo_rol'];
+                }
+            } catch (PDOException $e) {
+                exit("Error: ".$e->getMessage());
+            }
+        }
     }

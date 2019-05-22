@@ -123,6 +123,8 @@
             $user = new Usuario();
             $password = base64_encode($password);
             if(count(($user->existeUsuario($username, $password))) > 0){
+                $rol = $user->getTipoRol($username, $password);
+                $_SESSION['rol'] = $rol;
                 $_SESSION['pass'] = base64_decode($password);
                 $_SESSION['usuario'] = $username;
                 echo 'correcto';
