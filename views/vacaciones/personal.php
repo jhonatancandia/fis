@@ -24,13 +24,13 @@
                     if(!empty($_SESSION) and $_SESSION['rol'] == "administrador"){
                 ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="personal">PERSONAL</a>
+                            <a class="nav-link active" href="personal">PERSONAL</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="cargos">CARGOS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="../ruta">RUTA</a>
+                            <a class="nav-link" href="../ruta">RUTA</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="unidad">UNIDAD</a>

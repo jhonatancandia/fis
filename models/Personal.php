@@ -113,7 +113,8 @@
             $conex = new Database();
             $conexion = $conex->connect();
             try {
-                $query = "SELECT FROM $this->tabla p, usuario u WHERE ";
+                $query = "SELECT DISTINCT ci, nombre, apellidos FROM empleado WHERE estado = true AND ci NOT IN (SELECT ci FROM usuario)";
+                return  $conexion->query($query)->fetchAll();
             } catch (PDOException $e) {
                 exit("Error: ".$e->getMessage());
             }

@@ -13,18 +13,19 @@
             $this->username = '';
             $this->password = '';
             $this->ci = '';
-            $this->rol = 2;
+            $this->rol = '';
             $this->tabla = 'usuario';
             $this->estado = true;
         }
 
-        public function create($username, $password, $ci){
+        public function create($username, $password, $ci, $rol){
             $conex = new Database();
             $conexion = $conex->connect();
             try {
                 $this->username = $username;
                 $this->password = $password;
                 $this->ci = $ci;
+                $this->rol = $rol;
                 $query = "INSERT INTO $this->tabla (nombre_usuario, contrasenia, estado, ci, cod_rol) VALUES('$this->username', '$this->password', '$this->estado', '$this->ci', $this->rol)";
                 return $conexion->prepare($query)->execute();
             } catch (PDOException $e) {
@@ -106,7 +107,7 @@
             try {
                 $this->username = $username;
                 $this->password = $password;
-                $query = "SELECT * FROM $this->tabla WHERE nombre_usuario = '$this->username' AND contrasenia = '$this->password'";
+                $query = "SELECT * FROM $this->tabla WHERE nombre_usuario = '$this->username' AND contrasenia = '$this->password' AND estado = true";
                 return $conexion->query($query)->fetchAll();
             } catch (PDOException $e) {
                 exit("Error: ".$e->getMessage());
@@ -119,7 +120,7 @@
             try {
                 $this->username = $username;
                 $this->password = $password;
-                $query = "SELECT r.tipo_rol FROM usuario u, rol r WHERE u.nombre_usuario = '$this->username' AND u.contrasenia = '$this->password' AND u.cod_rol = r.cod_rol";
+                $query = "SELECT r.tipo_rol FROM usuario u, rol r WHERE u.cod_rol = r.cod_rol AND u.nombre_usuario = '$this->username' AND u.contrasenia = '$this->password'";
                 $rol = $conexion->query($query)->fetchAll();
                 foreach ($rol as $tipo_rol) {
                     return $tipo_rol['tipo_rol'];

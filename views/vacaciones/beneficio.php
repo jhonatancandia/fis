@@ -30,7 +30,7 @@
                             <a class="nav-link" href="cargos">CARGOS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="../ruta">RUTA</a>
+                            <a class="nav-link" href="../ruta">RUTA</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="unidad">UNIDAD</a>
@@ -39,7 +39,7 @@
                             <a class="nav-link" href="situacion">SITUACION</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">BENEFICIO</a>
+                            <a class="nav-link active" href="">BENEFICIO</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../reportes">REPORTES</a>

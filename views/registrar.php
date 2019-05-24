@@ -172,7 +172,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">¿Estas seguro que deseas activar al usuario?</h5>
+                                                <h5 class="modal-title">¿Estas seguro que deseas eliminar al usuario?</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -195,7 +195,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">¿Estas seguro que deseas eliminar?</h5>
+                                                <h5 class="modal-title">¿Estas seguro que deseas activar al usuario?</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -248,7 +248,7 @@
                                 <?php 
                                     require_once '../models/Personal.php';
                                     $personal = new Personal();
-                                    $personales = $personal->read();
+                                    $personales = $personal->personalSinCuenta();
                                     foreach ($personales as $person) {
                                 ?>
                                         <option value="<?= $person['ci'] ?>"><?= $person['nombre'].' '.$person['apellidos'] ?></option>
@@ -256,6 +256,13 @@
                                     }
                                 ?>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="rol" required>
+                                <option>Elegir rol</option>
+                                <option value="1">Administrador</option>
+                                <option value="2">Usuario</option>
+                            </select>   
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -30,7 +30,7 @@
                             <a class="nav-link" href="../vacaciones/cargos">CARGOS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="../ruta">RUTA</a>
+                            <a class="nav-link" href="../ruta">RUTA</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../vacaciones/unidad">UNIDAD</a>
@@ -42,7 +42,7 @@
                             <a class="nav-link" href="../vacaciones/beneficio">BENEFICIO</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">REPORTES</a>
+                            <a class="nav-link active" href="">REPORTES</a>
                         </li>
                 <?php
                     }elseif (!empty($_SESSION) and $_SESSION['rol'] == "usuario") {

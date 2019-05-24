@@ -6,15 +6,16 @@
         $username = addslashes(strip_tags($_POST['nombre_usuario']));
         $password = addslashes(strip_tags($_POST['password']));
         $ci = addslashes(strip_tags($_POST['ci']));
+        $rol = addslashes(strip_tags($_POST['rol']));
 
-        registrarUsuario($username, $password, $ci);
+        registrarUsuario($username, $password, $ci, $rol);
     }
 
-    function registrarUsuario($username, $password, $ci){
-        if(!empty($username) and !empty($password) and !empty($ci)){
+    function registrarUsuario($username, $password, $ci, $rol){
+        if(!empty($username) and !empty($password) and !empty($ci) and !empty($rol)){
             $usuario = new Usuario();
             $password = base64_encode($password);
-            if($usuario->create($username, $password, $ci)){
+            if($usuario->create($username, $password, $ci, $rol)){
                 header('Location: ../views/registrar');
             }else{
                 header('Location: ../views/registrar?'.base64_decode('res').'='.base64_decode('error_query'));

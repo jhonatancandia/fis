@@ -2,6 +2,7 @@
 <html lang="en">
 <?php 
     include '../layout/head.php';
+    session_start();
 ?>
 
 <body>
