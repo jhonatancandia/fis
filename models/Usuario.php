@@ -105,9 +105,7 @@
             $conex = new Database();
             $conexion = $conex->connect();
             try {
-                $this->username = $username;
-                $this->password = $password;
-                $query = "SELECT * FROM $this->tabla WHERE nombre_usuario = '$this->username' AND contrasenia = '$this->password' AND estado = true";
+                $query = "SELECT * FROM $this->tabla WHERE nombre_usuario = '$username' AND contrasenia = '$password' AND estado = true";
                 return $conexion->query($query)->fetchAll();
             } catch (PDOException $e) {
                 exit("Error: ".$e->getMessage());
@@ -118,9 +116,7 @@
             $conex = new Database();
             $conexion = $conex->connect();
             try {
-                $this->username = $username;
-                $this->password = $password;
-                $query = "SELECT r.tipo_rol FROM usuario u, rol r WHERE u.cod_rol = r.cod_rol AND u.nombre_usuario = '$this->username' AND u.contrasenia = '$this->password'";
+                $query = "SELECT r.tipo_rol FROM usuario u, rol r WHERE u.cod_rol = r.cod_rol AND u.nombre_usuario = '$username' AND u.contrasenia = '$password'";
                 $rol = $conexion->query($query)->fetchAll();
                 foreach ($rol as $tipo_rol) {
                     return $tipo_rol['tipo_rol'];

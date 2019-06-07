@@ -119,4 +119,18 @@
                 exit("Error: ".$e->getMessage());
             }
         }
+
+        public function getCi($username, $password){
+            $conex = new Database();
+            $conexion = $conex->connect();
+            try {
+                $query = "SELECT ci FROM usuario u WHERE u.nombre_usuario = '$username' AND u.contrasenia = '$password'";
+                $usuario = $conexion->query($query)->fetchAll();
+                foreach ($usuario as $ci) {
+                    return $ci['ci'];
+                }
+            } catch (PDOException $e) {
+                exit("Error: ".$e->getMessage());
+            }
+        }
     }

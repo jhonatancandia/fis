@@ -39,7 +39,7 @@
                             <a class="nav-link" href="situacion">SITUACION</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">BENEFICIO</a>
+                            <a class="nav-link" href="beneficio">BENEFICIO</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../reportes">REPORTES</a>

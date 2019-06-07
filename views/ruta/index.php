@@ -30,7 +30,7 @@
                             <a class="nav-link" href="../vacaciones/cargos">CARGOS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="ruta">RUTA</a>
+                            <a class="nav-link active" href="">RUTA</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../vacaciones/unidad">UNIDAD</a>
@@ -46,7 +46,6 @@
                         </li>
                 <?php
                     }elseif (!empty($_SESSION) and $_SESSION['rol'] == "usuario") {
-                        echo $_SESSION['rol'];
                 ?>
                         <li class="nav-item">
                             <a class="nav-link active" href="">RUTA</a>
@@ -104,14 +103,17 @@
                                 <th scope="col" class="text-center">PROCEDENCIA</th>
                                 <th scope="col" class="text-center">DESCRIPCION</th>
                                 <th scope="col" class="text-center">DERIVADO</th>
-                                <th scope="col" class="text-center">ACCIONES</th>
+                                <th scope="col" class="text-center">ESTADO</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php 
                                 require_once '../../models/Ruta.php'; 
+                                require_once '../../models/Personal.php';
+
                                 $rut = new Ruta();
-                                $ruta = $rut->read();
+                                $person = new Personal();
+                                $ruta = $rut->readMyRoute($person->getCi($_SESSION['usuario'], base64_encode($_SESSION['pass'])));
                                 foreach ($ruta as $r) {
                             ?>
                             <tr>
@@ -119,34 +121,55 @@
                                 <td class="text-center"><?= $r['fecha_ingreso'];?></td>
                                 <td class="text-center"><?=$r['nombre'].' '.$r['apellidos']?></td>
                                 <td class="text-center"><?= $r['descripcion'];?></td>
-                                <td class="text-center"><?=$r['cargo']?></td>
                                 <td class="text-center">
-                                    <a href="" title="Eliminar" data-toggle="modal"
-                                        data-target="#modalEliminarRuta<?=$r['cod_ruta'];?>"><i
-                                            class="far fa-trash-alt"></i></a>
+                                    <?php 
+                                        $p_derivado = new Personal();
+                                        $p_derivado = $p_derivado->getDatos($r['ci_destino']);
+                                        foreach ($p_derivado as $p) {
+                                            echo $p['nombre'].' '.$p['apellidos'];                                       
+                                        }
+                                    ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php 
+                                        if($r['estado'] == 1){
+                                    ?>
+                                            <i class="fas fa-check" style="color:blue;" data-toggle="tooltip" data-placement="top" title="Entregado"></i>
+                                    <?php
+                                        }else{
+                                    ?>
+                                            <i class="fas fa-check-double" style="color:blue;" data-toggle="tooltip" data-placement="top" title="Visto"></i>
+                                    <?php
+                                        }
+                                    ?>
+                                    
                                 </td>
                             </tr>
-                            <!-- Modal eliminar ruta -->
-                            <form action="../../controllers/Ruta.php" method="post">
-                                <div class="modal fade" tabindex="-1" role="dialog" id="modalEliminarRuta<?=$r['cod_ruta'];?>">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">¿Estas seguro que deseas eliminar?</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body text-center">
-                                                <input type="hidden" value="<?= $r['cod_ruta']?>" name="cod_ruta_el">
-                                                <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
-                                                <button type="submit" name="eliminar" class="btn btn-danger">Si</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            <!-- Final Modal eliminar ruta -->
+                            <?php        
+                                }
+                            ?>
+                            <?php 
+                                $rut = new Ruta();
+                                $person = new Personal();
+                                $ruta = $rut->readMySendRoute($person->getCi($_SESSION['usuario'], base64_encode($_SESSION['pass'])));
+                                foreach ($ruta as $r) {
+                            ?>
+                            <tr>
+                                <td class="text-center"><?= $r['cod_ruta'];?></td>
+                                <td class="text-center"><?= $r['fecha_ingreso'];?></td>
+                                <td class="text-center"><?=$r['nombre'].' '.$r['apellidos']?></td>
+                                <td class="text-center"><?= $r['descripcion'];?></td>
+                                <td class="text-center">
+                                    <?php 
+                                        $p_derivado = new Personal();
+                                        $p_derivado = $p_derivado->getDatos($r['ci_destino']);
+                                        foreach ($p_derivado as $p) {
+                                            echo $p['nombre'].' '.$p['apellidos'];                                       
+                                        }
+                                    ?>
+                                </td>
+                                <td class="text-center"><i class="far fa-envelope" style="color:blue;" data-toggle="tooltip" data-placement="top" title="Recibido"></i></td>
+                            </tr>
                             <?php        
                                 }
                             ?>
@@ -159,7 +182,7 @@
     <!-- Fin Tabla ruta -->
     <!-- Modal registrar nueva ruta -->
     <form action="../../controllers/Ruta.php" method="post">
-        <div class="modal fade" id="modalNuevaRuta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="modalNuevaRuta" tabindex="-1"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -171,14 +194,16 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
+                            <input class="form-control" type="text" name="num_ruta" placeholder="Numero de ruta">
+                        </div>
+                        <div class="form-group">
                             <input class="form-control" id="datepicker2" placeholder="Fecha de ingreso"
                                 name="fecha_ingreso" />
                         </div>
                         <div class="form-group">
                             <select class="form-control" name="procedencia" required>
-                                <option>Elegir procedencia</option>
+                                <option>Procedencia...</option>
                                 <?php
-                                    require_once '../../models/Personal.php';
                                     $personal = new Personal();
                                     $personal = $personal->read();
                                     foreach ($personal as $per){
@@ -195,14 +220,13 @@
                         </div>
                         <div class="form-group">
                             <select class="form-control" name="derivado" required>
-                                <option>Elegir derivado</option>
+                                <option>Derivado a...</option>
                                 <?php
-                                    require_once '../../models/Cargo.php';
-                                    $cargo = new Cargo();
-                                    $cargos = $cargo->read();
-                                    foreach ($cargos as $carg){
+                                    $derivados = new Personal();
+                                    $derivados = $derivados->read();
+                                    foreach ($derivados as $derivado){
                                 ?>
-                                <option value="<?= $carg['nro_item']?>"><?= $carg['cargo']?></option>
+                                <option value="<?= $derivado['ci']?>"><?= $derivado['nombre'].' '.$derivado['apellidos']?></option>
                                 <?php
                                     }
                                 ?>
@@ -221,6 +245,33 @@
     <?php 
         include '../layout/error.php';
         include '../layout/script.php';    
+        $ci = new Personal();
+        $ci = $ci->getCi($_SESSION['usuario'], base64_encode($_SESSION['pass']));
+        
+        $ruta = new Ruta();
+        $cantidad = count($ruta->tengoRutaPendiente($ci)); 
+        if($cantidad > 0){ 
+    ?>   
+        <form action="../../controllers/Ruta.php" method="POST">
+            <div class="modal fade" id="modalRuta" tabindex="-1" role="dialog" aria-labelledby="modalRuta" aria-hidden="true" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Usted tiene <?= $cantidad ?> nueva(s) ruta(s)</h5>
+                            <input type="hidden" name="ci" value="<?= $ci ?>">
+                            <button type="submit" name="visto" class="btn btn-primary">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form> 
+        <script>
+            $(document).ready(function () {
+                $("#modalRuta").modal('show');
+            });
+        </script>
+    <?php
+        }
     ?>
 </body>
 
